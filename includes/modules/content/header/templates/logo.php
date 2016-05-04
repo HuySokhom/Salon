@@ -19,13 +19,24 @@
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
         <ul class="nav navbar-nav navbar-right">
           <li>
+            <a href="">Khmer</a>
+          </li>
+          <li>
+            <a href="">English</a>
+          </li>
+        </ul>
+        <div>
+          <input type="text" class="form-control" placeholder="Search..." />
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
             <a href="index.php">Home</a>
           </li>
           <li>
             <a href="about_us.php">About Us</a>
           </li>
           <li>
-            <a href="service.php">Our Service</a>
+            <a href="service.php">Our Service</a> 
           </li>
           <li>
             <a href="">Products</a>
