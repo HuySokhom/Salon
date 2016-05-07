@@ -1,3 +1,4 @@
+<?php /*
 <div class="col-sm-<?php echo $content_width; ?>">
   <div class="footerbox information">
     <h2><?php echo MODULE_CONTENT_FOOTER_INFORMATION_HEADING_TITLE; ?></h2>
@@ -9,3 +10,5 @@
     </ul>  
   </div>
 </div>
+
+ */

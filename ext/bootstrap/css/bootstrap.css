@@ -1078,7 +1078,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: #F4F4F4;
 }
 input,
 button,
@@ -1566,20 +1566,24 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  background: #FFF;
 }
 @media (min-width: 768px) {
   .container {
     width: 750px;
+    background: #FFF;
   }
 }
 @media (min-width: 992px) {
   .container {
     width: 970px;
+    background: #FFF;
   }
 }
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
+    background: #FFF;
   }
 }
 .container-fluid {

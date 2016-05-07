@@ -19,38 +19,37 @@
 
     $$link = mysqli_connect($server, $username, $password, $database);
 
-    if ( !mysqli_connect_errno() ) {
-      mysqli_set_charset($$link, 'utf8');
-    } 
+    // also bind db res to RestApiResources
+    RestApiResources::setDbRes($$link);
+    
+//     if ( !mysqli_connect_errno() ) {
+      mysqli_set_charset(RestApiResources::getDbRes(), 'utf8');
+      
+      // enable "big selects"
+      mysqli_query(RestApiResources::getDbRes(), "SET SQL_BIG_SELECTS = 1");
+//     } 
 
-    return $$link;
+    return RestApiResources::getDbRes();
   }
 
   function tep_db_close($link = 'db_link') {
-    global $$link;
-
-    return mysqli_close($$link);
+    return mysqli_close(RestApiResources::getDbRes());
   }
 
-  function tep_db_error($query, $errno, $error) {
-    global $logger;
-
+  function tep_db_error($query, $errno, $error) { 
     if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
-      $logger->write('[' . $errno . '] ' . $error, 'ERROR');
+      error_log('ERROR: [' . $errno . '] ' . $error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
     }
 
     die('<font color="#000000"><strong>' . $errno . ' - ' . $error . '<br /><br />' . $query . '<br /><br /><small><font color="#ff0000">[TEP STOP]</font></small><br /><br /></strong></font>');
   }
 
   function tep_db_query($query, $link = 'db_link') {
-    global $$link, $logger;
-
     if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
-      if (!is_object($logger)) $logger = new logger;
-      $logger->write($query, 'QUERY');
+      error_log('QUERY: ' . $query . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
     }
 
-    $result = mysqli_query($$link, $query) or tep_db_error($query, mysqli_errno($$link), mysqli_error($$link));
+    $result = mysqli_query(RestApiResources::getDbRes(), $query) or tep_db_error($query, mysqli_errno(RestApiResources::getDbRes()), mysqli_error(RestApiResources::getDbRes()));
 
     return $result;
   }
@@ -103,17 +102,6 @@
     return mysqli_fetch_array($db_query, MYSQLI_ASSOC);
   }
 
-  function tep_db_result($result, $row, $field = '') {
-    if ( $field === '' ) {
-      $field = 0;
-    }
-
-    tep_db_data_seek($result, $row);
-    $data = tep_db_fetch_array($result);
-
-    return $data[$field];
-  }
-
   function tep_db_num_rows($db_query) {
     return mysqli_num_rows($db_query);
   }
@@ -123,9 +111,9 @@
   }
 
   function tep_db_insert_id($link = 'db_link') {
-    global $$link;
+    
 
-    return mysqli_insert_id($$link);
+    return mysqli_insert_id(RestApiResources::getDbRes());
   }
 
   function tep_db_free_result($db_query) {
@@ -141,14 +129,24 @@
   }
 
   function tep_db_input($string, $link = 'db_link') {
-    global $$link;
-
-    return mysqli_real_escape_string($$link, $string);
+    
+     
+//     if( ! is_object(RestApiResources::getDbRes()) ){
+//     	echo "link is: $link \n\n";
+    	
+//     	var_dump( RestApiResources::getDbRes() );
+    	
+//     	var_dump(debug_backtrace()); exit;
+//     }
+    
+    
+//     return mysqli_real_escape_string(RestApiResources::getDbRes(), $string);
+    return mysqli_real_escape_string(RestApiResources::getDbRes(), $string);
   }
 
   function tep_db_prepare_input($string) {
     if (is_string($string)) {
-      return trim(stripslashes($string));
+      return trim(tep_sanitize_string(stripslashes($string)));
     } elseif (is_array($string)) {
       reset($string);
       while (list($key, $value) = each($string)) {
@@ -161,15 +159,15 @@
   }
 
   function tep_db_affected_rows($link = 'db_link') {
-    global $$link;
+    
 
-    return mysqli_affected_rows($$link);
+    return mysqli_affected_rows(RestApiResources::getDbRes());
   }
 
   function tep_db_get_server_info($link = 'db_link') {
-    global $$link;
+    
 
-    return mysqli_get_server_info($$link);
+    return mysqli_get_server_info(RestApiResources::getDbRes());
   }
 
   if ( !function_exists('mysqli_connect') ) {

@@ -12,7 +12,7 @@
 
 define('NAVBAR_TITLE', 'Create an Account');
 
-define('HEADING_TITLE', 'My Account Information');
+define('HEADING_TITLE', 'Register Today For Post Free Ad');
 
 define('TEXT_ORIGIN_LOGIN', '<font color="#FF0000"><small><strong>NOTE:</strong></small></font> If you already have an account with us, please login at the <a href="%s"><u>login page</u></a>.');
 

@@ -53,4 +53,13 @@
   define('FILENAME_VERSION_CHECK', 'version_check.php');
   define('FILENAME_WHOS_ONLINE', 'whos_online.php');
   define('FILENAME_ZONES', 'zones.php');
-?>
+  
+  // add new filename
+  define('FILENAME_VEHICLES_TYPE', 'vehicles.php');
+define('FILENAME_LOCATION', 'location.php');
+define('FILENAME_IMAGE_SLIDER', 'image_slider.php');
+define('FILENAME_CATEGORIES_BRAND', 'categories_brand.php');
+
+  
+  
+  

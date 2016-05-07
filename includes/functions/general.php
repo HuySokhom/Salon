@@ -214,6 +214,27 @@
   }
 
 ////
+// Returns an array with countries
+// TABLES: countries
+function tep_get_location($id = '') {
+  $location_array = array();
+  if (tep_not_null($id)) {
+    $locations = tep_db_query("select name from location where id = '" . (int)$id . "'");
+    $locations_values = tep_db_fetch_array($locations);
+    $location_array = array('name' => $locations_values['name']);
+  } else {
+    $locations = tep_db_query("select id, name from location order by name");
+    while ($locations_values = tep_db_fetch_array($locations)) {
+      $location_array[] = array('id' => $locations_values['id'],
+          'name' => $locations_values['name']);
+    }
+  }
+
+  return $location_array;
+}
+
+
+////
 // Alias function to tep_get_countries, which also returns the countries iso codes
   function tep_get_countries_with_iso_codes($countries_id) {
     return tep_get_countries($countries_id, true);
@@ -537,6 +558,26 @@
 
     return $number;
   }
+// list category
+function tep_get_categories_list($parent_id = '0', $indent = '') {
+  global $languages_id;
+  $categories_query = tep_db_query("select c.categories_id, cd.categories_name from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where parent_id = '" . (int)$parent_id . "' and c.categories_id = cd.categories_id and cd.language_id = '" . (int)$languages_id . "' order by sort_order, cd.categories_name");
+  if ( !$parent_id ){
+    $t = '<ul class="nav navbar-nav">';
+  }else{
+    $t = '<ul class="hide-menu">';
+  }
+  while ($categories = tep_db_fetch_array($categories_query)) {
+    $t .= '<li><a href="' . tep_href_link(FILENAME_DEFAULT, 'cPath=' . $categories['categories_id']) . '">';
+    $t .= $categories['categories_name'];
+    if ($categories['categories_id'] != $parent_id) {
+      $t .= tep_get_categories_list($categories['categories_id'], $indent . '');
+    }
+    $t .= '</a></li>';
+  }
+  $t .= '</ul>';
+  return $t;
+}
 
   function tep_get_categories($categories_array = '', $parent_id = '0', $indent = '') {
     global $languages_id;
@@ -549,7 +590,7 @@
                                   'text' => $indent . $categories['categories_name']);
 
       if ($categories['categories_id'] != $parent_id) {
-        $categories_array = tep_get_categories($categories_array, $categories['categories_id'], $indent . '&nbsp;&nbsp;');
+        $categories_array = tep_get_categories($categories_array, $categories['categories_id'], $indent . '&nbsp;&nbsp;&nbsp;&nbsp;');
       }
     }
 

@@ -12,12 +12,18 @@
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <?php echo '<li><a class="store-brand" href="' . tep_href_link(FILENAME_DEFAULT) . '">' . HEADER_HOME . '</a></li>'; ?>
-          <?php echo '<li><a href="' . tep_href_link(FILENAME_PRODUCTS_NEW) . '">' . HEADER_WHATS_NEW . '</a></li>'; ?>
-          <?php echo '<li><a href="' . tep_href_link(FILENAME_SPECIALS) . '">' . HEADER_SPECIALS . '</a></li>'; ?>
-          <?php echo '<li><a href="' . tep_href_link(FILENAME_REVIEWS) . '">' . HEADER_REVIEWS . '</a></li>'; ?>
+          <?php //echo '<li><a href="' . tep_href_link(FILENAME_PRODUCTS_NEW) . '">' . HEADER_WHATS_NEW . '</a></li>'; ?>
+          <?php //echo '<li><a href="' . tep_href_link(FILENAME_SPECIALS) . '">' . HEADER_SPECIALS . '</a></li>'; ?>
+          <?php //echo '<li><a href="' . tep_href_link(FILENAME_REVIEWS) . '">' . HEADER_REVIEWS . '</a></li>'; ?>
+		<?php 
+			if (tep_session_is_registered('customer_id')) {
+				echo '<li><a href="' . tep_href_link(FILENAME_ACCOUNT . '#/manage', '', 'SSL') . '">' . POST_PRODUCT . '</a>';
+			}
+		?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php
+          /* remove no need to show for site setting change currency 
           if (substr(basename($PHP_SELF), 0, 8) != 'checkout') {
             ?>
             <li class="dropdown">
@@ -51,7 +57,7 @@
               </ul>
             </li>
             <?php
-          }
+          } */
           ?>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo (tep_session_is_registered('customer_id')) ? sprintf(HEADER_ACCOUNT_LOGGED_IN, $customer_first_name) : HEADER_ACCOUNT_LOGGED_OUT; ?></a>
@@ -64,15 +70,20 @@
                  echo '<li><a href="' . tep_href_link(FILENAME_LOGIN, '', 'SSL') . '">' . HEADER_ACCOUNT_LOGIN . '</a>';
                  echo '<li><a href="' . tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL') . '">' . HEADER_ACCOUNT_REGISTER . '</a>';
               }
+              if(tep_session_is_registered('customer_id')){
               ?>
               <li class="divider"></li>
-              <li><?php echo '<a href="' . tep_href_link(FILENAME_ACCOUNT, '', 'SSL') . '">' . HEADER_ACCOUNT . '</a>'; ?></li>
-              <li><?php echo '<a href="' . tep_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL') . '">' . HEADER_ACCOUNT_HISTORY . '</a>'; ?></li>
-              <li><?php echo '<a href="' . tep_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL') . '">' . HEADER_ACCOUNT_ADDRESS_BOOK . '</a>'; ?></li>
-              <li><?php echo '<a href="' . tep_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL') . '">' . HEADER_ACCOUNT_PASSWORD . '</a>'; ?></li>
+              <li><?php echo '<a href="' . tep_href_link(FILENAME_ACCOUNT . '#/account', '', 'SSL') . '">' . HEADER_ACCOUNT . '</a>'; ?></li>
+              <li><?php //echo '<a href="' . tep_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL') . '">' . HEADER_ACCOUNT_HISTORY . '</a>'; ?></li>
+              <li><?php //echo '<a href="' . tep_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL') . '">' . HEADER_ACCOUNT_ADDRESS_BOOK . '</a>'; ?></li>
+              <li><?php // echo '<a href="' . tep_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL') . '">' . HEADER_ACCOUNT_PASSWORD . '</a>'; ?></li>
+             <?php 
+				}
+			?>
             </ul>
           </li>
           <?php
+          /* Don't need to show cart content
           if ($cart->count_contents() > 0) {
             ?>
             <li class="dropdown">
@@ -93,6 +104,8 @@
           else {
             echo '<li class="nav navbar-text">' . HEADER_CART_NO_CONTENTS . '</li>';
           }
+          
+          */
           ?>
         </ul>
       </div>

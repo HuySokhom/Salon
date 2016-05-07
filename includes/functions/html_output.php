@@ -289,6 +289,20 @@ function tep_href_link($page = '', $parameters = '', $connection = 'NONSSL', $ad
   }
 
 ////
+// Creates a pull-down list of location
+function tep_get_location_list($name, $selected = '', $parameters = '') {
+  $location_array = array(array('id' => '', 'text' => PULL_DOWN_DEFAULT));
+  $location = tep_get_location();
+
+  for ($i=0, $n=sizeof($location); $i<$n; $i++) {
+    $location_array[] = array('id' => $location[$i]['id'], 'text' => $location[$i]['name']);
+  }
+
+  return tep_draw_pull_down_menu($name, $location_array, $selected, $parameters);
+}
+
+
+////
 // Creates a pull-down list of countries
   function tep_get_country_list($name, $selected = '', $parameters = '') {
     $countries_array = array(array('id' => '', 'text' => PULL_DOWN_DEFAULT));

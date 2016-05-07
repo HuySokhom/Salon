@@ -60,4 +60,6 @@
   define('FILENAME_SSL_CHECK', 'ssl_check.php');
   define('FILENAME_TELL_A_FRIEND', 'tell_a_friend.php');
   define('FILENAME_UPCOMING_PRODUCTS', 'upcoming_products.php');
-?>
+  
+  // new file
+  define('FILENAME_POST_PRODUCT', 'post_product.php');

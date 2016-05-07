@@ -28,36 +28,39 @@
     $email_address = tep_db_prepare_input($HTTP_POST_VARS['email_address']);
     $telephone = tep_db_prepare_input($HTTP_POST_VARS['telephone']);
     $fax = tep_db_prepare_input($HTTP_POST_VARS['fax']);
+    $userName = tep_db_prepare_input($HTTP_POST_VARS['user_name']);
+    $customersAddress = tep_db_prepare_input($HTTP_POST_VARS['customers_address']);
+    $location = tep_db_prepare_input($HTTP_POST_VARS['location']);
 
     $error = false;
 
-    if (ACCOUNT_GENDER == 'true') {
-      if ( ($gender != 'm') && ($gender != 'f') ) {
-        $error = true;
+//    if (ACCOUNT_GENDER == 'true') {
+//      if ( ($gender != 'm') && ($gender != 'f') ) {
+//        $error = true;
+//
+//        $messageStack->add('account_edit', ENTRY_GENDER_ERROR);
+//      }
+//    }
 
-        $messageStack->add('account_edit', ENTRY_GENDER_ERROR);
-      }
-    }
+//    if (strlen($firstname) < ENTRY_FIRST_NAME_MIN_LENGTH) {
+//      $error = true;
+//
+//      $messageStack->add('account_edit', ENTRY_FIRST_NAME_ERROR);
+//    }
 
-    if (strlen($firstname) < ENTRY_FIRST_NAME_MIN_LENGTH) {
-      $error = true;
+//    if (strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
+//      $error = true;
+//
+//      $messageStack->add('account_edit', ENTRY_LAST_NAME_ERROR);
+//    }
 
-      $messageStack->add('account_edit', ENTRY_FIRST_NAME_ERROR);
-    }
-
-    if (strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
-      $error = true;
-
-      $messageStack->add('account_edit', ENTRY_LAST_NAME_ERROR);
-    }
-
-    if (ACCOUNT_DOB == 'true') {
-      if ((strlen($dob) < ENTRY_DOB_MIN_LENGTH) || (!empty($dob) && (!is_numeric(tep_date_raw($dob)) || !@checkdate(substr(tep_date_raw($dob), 4, 2), substr(tep_date_raw($dob), 6, 2), substr(tep_date_raw($dob), 0, 4))))) {
-        $error = true;
-
-        $messageStack->add('account_edit', ENTRY_DATE_OF_BIRTH_ERROR);
-      }
-    }
+//    if (ACCOUNT_DOB == 'true') {
+//      if ((strlen($dob) < ENTRY_DOB_MIN_LENGTH) || (!empty($dob) && (!is_numeric(tep_date_raw($dob)) || !@checkdate(substr(tep_date_raw($dob), 4, 2), substr(tep_date_raw($dob), 6, 2), substr(tep_date_raw($dob), 0, 4))))) {
+//        $error = true;
+//
+//        $messageStack->add('account_edit', ENTRY_DATE_OF_BIRTH_ERROR);
+//      }
+//    }
 
     if (strlen($email_address) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
       $error = true;
@@ -86,11 +89,16 @@
     }
 
     if ($error == false) {
-      $sql_data_array = array('customers_firstname' => $firstname,
-                              'customers_lastname' => $lastname,
-                              'customers_email_address' => $email_address,
-                              'customers_telephone' => $telephone,
-                              'customers_fax' => $fax);
+      $sql_data_array = array(
+//          'customers_firstname' => $firstname,
+//          'customers_lastname' => $lastname,
+          'customers_email_address' => $email_address,
+          'customers_telephone' => $telephone,
+          'customers_location' => $location,
+          'user_name' => $userName,
+          'customers_address' => $customersAddress,
+          'customers_fax' => $fax
+      );
 
       if (ACCOUNT_GENDER == 'true') $sql_data_array['customers_gender'] = $gender;
       if (ACCOUNT_DOB == 'true') $sql_data_array['customers_dob'] = tep_date_raw($dob);
@@ -113,7 +121,12 @@
     }
   }
 
-  $account_query = tep_db_query("select customers_gender, customers_firstname, customers_lastname, customers_dob, customers_email_address, customers_telephone, customers_fax from " . TABLE_CUSTOMERS . " where customers_id = '" . (int)$customer_id . "'");
+  $account_query = tep_db_query("
+    select
+      customers_gender, customers_firstname, customers_lastname, user_name, photo, customers_location,
+      customers_dob, customers_email_address, customers_telephone, customers_fax, customers_address
+    from " . TABLE_CUSTOMERS . "
+    where customers_id = '" . (int)$customer_id . "'");
   $account = tep_db_fetch_array($account_query);
 
   $breadcrumb->add(NAVBAR_TITLE_1, tep_href_link(FILENAME_ACCOUNT, '', 'SSL'));
@@ -138,7 +151,7 @@
 <div class="contentContainer">
   <div class="inputRequirement text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></div>
 
-  <?php
+  <?php /*
   if (ACCOUNT_GENDER == 'true') {
     if (isset($gender)) {
       $male = ($gender == 'm') ? true : false;
@@ -190,9 +203,16 @@
     </div>
   </div>
 <?php
-  }
+  } */
 ?>
-
+  <div class="form-group has-feedback">
+    <label for="inputUserName" class="control-label col-sm-3"><?php echo ENTRY_USER_NAME; ?></label>
+    <div class="col-sm-9">
+      <?php echo tep_draw_input_field('user_name', $account['user_name'], 'required aria-required="true"
+      id="inputUserName" placeholder="' . ENTRY_USER_NAME . '"', 'user_name'); ?>
+      <?php echo FORM_REQUIRED_INPUT; ?>
+    </div>
+  </div>
   <div class="form-group has-feedback">
     <label for="inputEmail" class="control-label col-sm-3"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
     <div class="col-sm-9">
@@ -201,16 +221,28 @@
     </div>
   </div>
   <div class="form-group has-feedback">
+    <label for="inputUserName" class="control-label col-sm-3"><?php echo ENTRY_ADDRESS; ?></label>
+    <div class="col-sm-9">
+      <?php echo tep_draw_textarea_field('customers_address', '', 5, 5, $account['customers_address'],
+          'required aria-required="true" id="inputCustomersAddress" placeholder="' . ENTRY_ADDRESS . '"'); ?>
+      <?php echo FORM_REQUIRED_INPUT; ?>
+    </div>
+  </div>
+  <div class="form-group has-feedback">
+    <label for="inputEmail" class="control-label col-sm-3"><?php echo ENTRY_LOCATION; ?></label>
+    <div class="col-sm-9">
+      <?php
+        echo tep_get_location_list('location', $account['customers_location'], 'required aria-required="true"
+        id="inputLocation"');
+        echo FORM_REQUIRED_INPUT;
+      ?>
+    </div>
+  </div>
+  <div class="form-group has-feedback">
     <label for="inputTelephone" class="control-label col-sm-3"><?php echo ENTRY_TELEPHONE_NUMBER; ?></label>
     <div class="col-sm-9">
       <?php echo tep_draw_input_field('telephone', $account['customers_telephone'], 'required aria-required="true" id="inputTelephone" placeholder="' . ENTRY_TELEPHONE_NUMBER . '"', 'tel'); ?>
       <?php echo FORM_REQUIRED_INPUT; ?>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputFax" class="control-label col-sm-3"><?php echo ENTRY_FAX_NUMBER; ?></label>
-    <div class="col-sm-9">
-      <?php echo tep_draw_input_field('fax', $account['customers_fax'], 'id="inputFax" placeholder="' . ENTRY_FAX_NUMBER . '"'); ?>
     </div>
   </div>
 

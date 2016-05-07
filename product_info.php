@@ -38,7 +38,17 @@
 
 <?php
   } else {
-    $product_info_query = tep_db_query("select p.products_id, pd.products_name, pd.products_description, p.products_model, p.products_quantity, p.products_image, pd.products_url, p.products_price, p.products_tax_class_id, p.products_date_added, p.products_date_available, p.manufacturers_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_status = '1' and p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$languages_id . "'");
+    $product_info_query = tep_db_query("
+        select p.products_id, p.products_image_thumbnail, pd.products_name, pd.products_description, p.products_model, p
+        .products_quantity, pd.products_viewed, m.manufacturers_name, p.products_image, pd.products_url, p.products_price, p
+        .products_tax_class_id, p.products_date_added, p.products_date_available, p.manufacturers_id
+        from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_MANUFACTURERS . " m
+        where p.products_status = '1'
+        and p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
+        and pd.products_id = p.products_id
+        and p.manufacturers_id = m.manufacturers_id
+        and pd.language_id = '" . (int)$languages_id . "'
+    ");
     $product_info = tep_db_fetch_array($product_info_query);
 
     tep_db_query("update " . TABLE_PRODUCTS_DESCRIPTION . " set products_viewed = products_viewed+1 where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and language_id = '" . (int)$languages_id . "'");
@@ -59,7 +69,7 @@
 
     $products_price .= '<meta itemprop="priceCurrency" content="' . tep_output_string($currency) . '" />';
 
-    $products_name = '<a href="' . tep_href_link('product_info.php', 'products_id=' . $product_info['products_id']) . '" itemprop="url"><span itemprop="name">' . $product_info['products_name'] . '</span></a>';
+    $products_name = '<span itemprop="name" class="product_name">' . $product_info['products_name'] . '</span>';
 
     if (tep_not_null($product_info['products_model'])) {
       $products_name .= '<br /><small>[<span itemprop="model">' . $product_info['products_model'] . '</span>]</small>';
@@ -71,7 +81,6 @@
 <div itemscope itemtype="http://schema.org/Product">
 
 <div class="page-header">
-  <h1 class="pull-right" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><?php echo $products_price; ?></h1>
   <h1><?php echo $products_name; ?></h1>
 </div>
 
@@ -80,72 +89,91 @@
     echo $messageStack->output('product_action');
   }
 ?>
-
+<link rel="stylesheet" href="ext/js/magnific-popup/magnific-popup.css">
+<script src="ext/js/magnific-popup/jquery.magnific-popup.js"></script><script>
+</script>
 <div class="contentContainer">
   <div class="contentText">
-
-<?php
+<script type="text/javascript" src="ext/js/slider/jssor.slider.mini.js"></script>
+    <!-- use jssor.slider.debug.js instead for debug -->
+    <script type="text/javascript" src="ext/js/slide_product.js"></script>
+    <link href="ext/css/slider_product.css" rel="stylesheet">
+<?php /*
     if (tep_not_null($product_info['products_image'])) {
 
-      echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], NULL, NULL, NULL, 'itemprop="image" style="display:none;"');
-
-      $photoset_layout = '1';
-
-      $pi_query = tep_db_query("select image, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where products_id = '" . (int)$product_info['products_id'] . "' order by sort_order");
+//      echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], NULL, NULL, NULL, 'itemprop="image" style="display:none;"');
+      $pi_query = tep_db_query("select image, image_thumbnail, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where
+      products_id = '" . (int)$product_info['products_id'] . "'order by sort_order");
       $pi_total = tep_db_num_rows($pi_query);
-
-      if ($pi_total > 0) {
-        $pi_sub = $pi_total-1;
-
-        while ($pi_sub > 5) {
-          $photoset_layout .= 5;
-          $pi_sub = $pi_sub-5;
-        }
-
-        if ($pi_sub > 0) {
-          $photoset_layout .= ($pi_total > 5) ? 5 : $pi_sub;
-        }
-?>
-
-    <div id="piGal" data-imgcount="<?php echo $photoset_layout; ?>">
-
-<?php
-        $pi_counter = 0;
-        $pi_html = array();
-
-        while ($pi = tep_db_fetch_array($pi_query)) {
-          $pi_counter++;
-
-          if (tep_not_null($pi['htmlcontent'])) {
-            $pi_html[] = '<div id="piGalDiv_' . $pi_counter . '">' . $pi['htmlcontent'] . '</div>';
-          }
-
-          echo tep_image(DIR_WS_IMAGES . $pi['image'], '', '', '', 'id="piGalImg_' . $pi_counter . '"');
-        }
-?>
-
+      ?>
+      <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px;
+       overflow: hidden; visibility: hidden; background-color: #24262e;">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('images/product_slider/loading.gif') no-repeat center center;
+            top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div class="gallery"  data-u="slides"
+            style="
+                cursor: default; position: relative;
+                top: 0px; left: 0px; width:800px;
+                height: 356px; overflow: hidden;"
+            >
+          <div data-p="144.50" style="display: none;">
+            <a href="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>">
+                <img data-u="image" src="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>" />
+            </a>
+            <img data-u="thumb" src="<?php echo DIR_WS_IMAGES . $product_info['products_image_thumbnail'];?>" />
+          </div>
+          <?php
+            if ($pi_total > 0) {
+                while ($pi = tep_db_fetch_array($pi_query)) {
+                    echo '<div data-p="144.50" style="display: none;">';
+                    echo '<a href="'. DIR_WS_IMAGES . $pi['image'] .'"><img data-u="image" src="' . DIR_WS_IMAGES . $pi['image'] . '" /></a>';
+                    echo '<img data-u="thumb" src="' . DIR_WS_IMAGES . $pi['image_thumbnail'] . '" />';
+                    echo '</div>';
+                }
+            }
+        ?>
+        </div>
+        <!-- Thumbnail Navigator -->
+        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:800px;height:100px;" data-autocenter="1">
+            <!-- Thumbnail Item Skin Begin -->
+            <div data-u="slides" style="cursor: default;">
+                <div data-u="prototype" class="p">
+                    <div class="w">
+                        <div data-u="thumbnailtemplate" class="t"></div>
+                    </div>
+                    <div class="c"></div>
+                </div>
+            </div>
+            <!-- Thumbnail Item Skin End -->
+        </div>
+        <!-- Arrow Navigator -->
+        <span data-u="arrowleft" class="jssora05l" style="top:158px;left:8px;width:40px;height:40px;"></span>
+        <span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;"></span>
+        <a href="http://www.jssor.com" style="display:none">Bootstrap Carousel</a>
     </div>
-
 <?php
-        if ( !empty($pi_html) ) {
-          echo '    <div style="display: none;">' . implode('', $pi_html) . '</div>';
-        }
-      } else {
+    } */
 ?>
-
-    <div id="piGal">
-      <?php echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], addslashes($product_info['products_name'])); ?>
-    </div>
-
-<?php
-      }
-    }
-?>
-
-<div itemprop="description">
-  <?php echo stripslashes($product_info['products_description']); ?>
+<div style="float: right;padding: 10px;">
+    <a href="#">
+        <img
+            src="images/ads/advertising_icon.jpg" style="width: 272px;" class="img-responsive"
+        />
+    </a>
+</div>
+<div itemprop="description" style="text-align: justify;">
+  <?php
+    echo stripslashes($product_info['products_description']);
+  ?>
 </div>
 
+<?php
+    include(DIR_WS_MODULES . 'relate_products.php');
+?>
 <?php
     $products_attributes_query = tep_db_query("select count(*) as total from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_ATTRIBUTES . " patrib where patrib.products_id='" . (int)$HTTP_GET_VARS['products_id'] . "' and patrib.options_id = popt.products_options_id and popt.language_id = '" . (int)$languages_id . "'");
     $products_attributes = tep_db_fetch_array($products_attributes_query);
@@ -206,8 +234,9 @@
     }
 ?>
 
-  <div class="buttonSet row">
-    <div class="col-xs-12 text-right"><?php echo tep_draw_hidden_field('products_id', $product_info['products_id']) . tep_draw_button(IMAGE_BUTTON_IN_CART, 'glyphicon glyphicon-shopping-cart', null, 'primary', null, 'btn-success'); ?></div>
+  <div class="buttonSet row" style="display: none;">
+    <div class="col-xs-6"><?php echo tep_draw_button(IMAGE_BUTTON_REVIEWS . (($reviews['count'] > 0) ? ' (' . $reviews['count'] . ')' : ''), 'glyphicon glyphicon-comment', tep_href_link(FILENAME_PRODUCT_REVIEWS, tep_get_all_get_params())); ?></div>
+    <div class="col-xs-6 text-right"><?php echo tep_draw_hidden_field('products_id', $product_info['products_id']) . tep_draw_button(IMAGE_BUTTON_IN_CART, 'glyphicon glyphicon-shopping-cart', null, 'primary', null, 'btn-success'); ?></div>
   </div>
 
   <div class="row">
@@ -233,9 +262,24 @@
 </div>
 
 </div>
-
 </form>
+<script>
+$('.gallery').each(function() { // the containers for all your galleries
+    $(this).magnificPopup({
+        delegate: 'a', // the selector for gallery item
+        type: 'image',
+        gallery: {
+          enabled:true
+        }
+    });
+});
 
+//    $(function() {
+//        $( "#columnLeft" ).css('display', 'none');
+//        $( "#bodyContent" ).removeClass('col-md-9 col-md-push-3');
+//        $( "#bodyContent" ).addClass('col-md-12');
+//    });
+</script>
 <?php
   }
   require(DIR_WS_INCLUDES . 'template_bottom.php');

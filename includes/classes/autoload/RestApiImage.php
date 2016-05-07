@@ -1,7 +1,7 @@
 <?php
 
 class RestApiImage extends RestApi {
-	
+
 	public function post( $params ){		
 		foreach( $_FILES as $file ){				
 			// get extension

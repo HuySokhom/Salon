@@ -223,12 +223,15 @@
                                 'products_weight' => (float)tep_db_prepare_input($HTTP_POST_VARS['products_weight']),
                                 'products_status' => tep_db_prepare_input($HTTP_POST_VARS['products_status']),
                                 'products_tax_class_id' => tep_db_prepare_input($HTTP_POST_VARS['products_tax_class_id']),
-                                'manufacturers_id' => (int)tep_db_prepare_input($HTTP_POST_VARS['manufacturers_id']));
+                                'manufacturers_id' => 7,// (int)tep_db_prepare_input
+//                                ($HTTP_POST_VARS['manufacturers_id']),
+                                'location_id' => (int)tep_db_prepare_input($HTTP_POST_VARS['location_id']));
 
         $products_image = new upload('products_image');
         $products_image->set_destination(DIR_FS_CATALOG_IMAGES);
         if ($products_image->parse() && $products_image->save()) {
           $sql_data_array['products_image'] = tep_db_prepare_input($products_image->filename);
+          $sql_data_array['products_image_thumbnail'] = tep_db_prepare_input($products_image->filename);
         }
 
         if ($action == 'insert_product') {
@@ -253,7 +256,7 @@
           $language_id = $languages[$i]['id'];
 
           $sql_data_array = array('products_name' => tep_db_prepare_input($HTTP_POST_VARS['products_name'][$language_id]),
-                                  'products_description' => tep_db_prepare_input($HTTP_POST_VARS['products_description'][$language_id]),
+                                  'products_description' => $HTTP_POST_VARS['products_description'][$language_id],
                                   'products_url' => tep_db_prepare_input($HTTP_POST_VARS['products_url'][$language_id]));
 
           if ($action == 'insert_product') {
@@ -283,6 +286,7 @@
             $t->set_destination(DIR_FS_CATALOG_IMAGES);
             if ($t->parse() && $t->save()) {
               $sql_data_array['image'] = tep_db_prepare_input($t->filename);
+              $sql_data_array['image_thumbnail'] = tep_db_prepare_input($t->filename);
             }
 
             tep_db_perform(TABLE_PRODUCTS_IMAGES, $sql_data_array, 'update', "products_id = '" . (int)$products_id . "' and id = '" . (int)$matches[1] . "'");
@@ -299,6 +303,7 @@
               $pi_sort_order++;
 
               $sql_data_array['image'] = tep_db_prepare_input($t->filename);
+              $sql_data_array['image_thumbnail'] = tep_db_prepare_input($t->filename);
               $sql_data_array['sort_order'] = $pi_sort_order;
 
               tep_db_perform(TABLE_PRODUCTS_IMAGES, $sql_data_array);
@@ -391,6 +396,7 @@
     $parameters = array('products_name' => '',
                        'products_description' => '',
                        'products_url' => '',
+                       'location_id' => '',
                        'products_id' => '',
                        'products_quantity' => '',
                        'products_model' => '',
@@ -408,7 +414,7 @@
     $pInfo = new objectInfo($parameters);
 
     if (isset($HTTP_GET_VARS['pID']) && empty($HTTP_POST_VARS)) {
-      $product_query = tep_db_query("select pd.products_name, pd.products_description, pd.products_url, p.products_id, p.products_quantity, p.products_model, p.products_image, p.products_price, p.products_weight, p.products_date_added, p.products_last_modified, date_format(p.products_date_available, '%Y-%m-%d') as products_date_available, p.products_status, p.products_tax_class_id, p.manufacturers_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id = '" . (int)$HTTP_GET_VARS['pID'] . "' and p.products_id = pd.products_id and pd.language_id = '" . (int)$languages_id . "'");
+      $product_query = tep_db_query("select pd.products_name, pd.products_description, pd.products_url, p.location_id, p.products_id, p.products_quantity, p.products_model, p.products_image, p.products_price, p.products_weight, p.products_date_added, p.products_last_modified, date_format(p.products_date_available, '%Y-%m-%d') as products_date_available, p.products_status, p.products_tax_class_id, p.manufacturers_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id = '" . (int)$HTTP_GET_VARS['pID'] . "' and p.products_id = pd.products_id and pd.language_id = '" . (int)$languages_id . "'");
       $product = tep_db_fetch_array($product_query);
 
       $pInfo->objectInfo($product);
@@ -427,6 +433,13 @@
     while ($manufacturers = tep_db_fetch_array($manufacturers_query)) {
       $manufacturers_array[] = array('id' => $manufacturers['manufacturers_id'],
                                      'text' => $manufacturers['manufacturers_name']);
+    }
+
+
+    $location_array = array(array('id' => '', 'text' => TEXT_NONE));
+    $location_query = tep_db_query("select id, name from location order by name");
+    while ($location = tep_db_fetch_array($location_query)) {
+      $location_array[] = array('id' => $location['id'],'text' => $location['name']);
     }
 
     $tax_class_array = array(array('id' => '0', 'text' => TEXT_NONE));
@@ -524,7 +537,12 @@ function updateNet() {
             <td colspan="2"><?php echo tep_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
           <tr>
-            <td class="main"><?php echo TEXT_PRODUCTS_MANUFACTURER; ?></td>
+            <td class="main">Location:</td>
+            <td class="main"><?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;'
+            . tep_draw_pull_down_menu('location_id', $location_array, $pInfo->location_id); ?></td>
+          </tr>
+          <tr>
+            <td class="main">Kind Of:</td>
             <td class="main"><?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . tep_draw_pull_down_menu('manufacturers_id', $manufacturers_array, $pInfo->manufacturers_id); ?></td>
           </tr>
           <tr>
@@ -561,7 +579,7 @@ function updateNet() {
 <script type="text/javascript"><!--
 updateGross();
 //--></script>
-<script src="js/ckeditor/ckeditor.js"></script>
+<script src="js/tinymce/tinymce.min.js"></script>
 <?php
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
@@ -580,12 +598,12 @@ updateGross();
 					?>&nbsp;
 				</td>
                 <td class="main">
-                	<?php 
+                	<?php
                 		echo tep_draw_textarea_field(
 							'products_description[' . $languages[$i]['id'] . ']', 
 							'soft', '70', '15', (empty($pInfo->products_id) ? '' 
-							: tep_get_products_description($pInfo->products_id, 
-							$languages[$i]['id']))
+							: stripslashes( tep_get_products_description($pInfo->products_id,
+							$languages[$i]['id']) )),'id="products_description"'
 						); 
 					?></td>
               </tr>
@@ -639,9 +657,23 @@ updateGross();
 #piList li { margin: 5px 0; padding: 2px; }
 </style>
 
-<!-- CKEditor -->
+<!-- TinyMce ditor -->
 <script>
-	CKEDITOR.replace( 'products_description[1]' );
+	tinymce.init({
+      selector:'#products_description',
+//      plugins: 'media',
+      plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste imagetools"
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+    imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
+    content_css: [
+      '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+      '//www.tinymce.com/css/codepen.min.css'
+    ]
+    });
 </script>
         
 <script type="text/javascript">
