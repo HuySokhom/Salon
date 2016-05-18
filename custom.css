@@ -540,6 +540,7 @@ h1, .h1 {
 }
 .background-image{
     background: rgb(220,190,126);
+    margin: -15px;
 }
 .navbar-inverse .navbar-nav > li > a {
     color: #FFFFFF;
