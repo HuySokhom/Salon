@@ -4,7 +4,7 @@
 
 /* Historical osCommerce ---------------------------------------------------- */
 body {
-    font: normal 13px/22px "Roboto", sans-serif;
+    font: normal 13px/22px "Roboto", khmer, sans-serif;
     color: #777777;
     background: #eee;
 }
@@ -539,8 +539,7 @@ h1, .h1 {
     height: 110px;
 }
 .background-image{
-    background: #1C5B6E;
-    color: #ffffff;
+    background: rgb(220,190,126);
 }
 .navbar-inverse .navbar-nav > li > a {
     color: #FFFFFF;

@@ -15,15 +15,8 @@
 </div>
 
 <footer>
-  <div class="footer">
-    <div class="container background-image">
-      <div class="row">
-        <?php echo $oscTemplate->getContent('footer'); ?>
-      </div>
-    </div>
-  </div>
   <div>
-    <div class="container background-image">
+    <div class="background-image">
       <div class="row">
         <?php echo $oscTemplate->getContent('footer_suffix'); ?>
       </div>

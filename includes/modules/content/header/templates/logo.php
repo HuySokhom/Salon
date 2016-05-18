@@ -1,5 +1,5 @@
-<nav class="navbar header-style navbar-inverse" role="navigation">
-  <div class="container"  style="background: #1C5B6E;">
+<nav class="navbar" role="navigation">
+  <div class="container" >
       <table width="100%">
           <tr>
               <td>
@@ -8,14 +8,6 @@
                       echo '<a href="' . tep_href_link('index.php') . '">
                             <img src="' . DIR_WS_IMAGES . STORE_LOGO .'"class="img-responsive" style="height: 104px;"/></a>';
                       ?>
-                  </div>
-              </td>
-              <td>
-                  <div class="col-sm-12">
-                      <img
-                          src="images/ads/advertise-here-a-748CTP.jpg"
-                          class="img-responsive"
-                          />
                   </div>
               </td>
           </tr>

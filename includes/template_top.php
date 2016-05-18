@@ -35,8 +35,7 @@
     <link rel="shortcut icon" href="images/banners/logo.ico">
     <link href="ext/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="custom.css" rel="stylesheet">
-    <link href="user.css" rel="stylesheet">
-    '
+    <link href='//fonts.googleapis.com/css?family=Khmer:400normal|Didact+Gothic:400normal|Open+Sans:400normal|Handlee:400normal|Lato:400normal|Lora:400normal|Roboto:400normal|Nunito:400normal|Montserrat:400normal|Hanuman:400normal|Raleway:400normal&subset=all' rel="stylesheet" type="text/css">
     <link href='ext/css/google_fonts.css' rel='stylesheet' type='text/css'>
 <!--[if lt IE 9]>
     <script src="ext/js/html5shiv.js"></script>
@@ -54,15 +53,6 @@
   <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>">
     <div class="row">
       <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
-        <div class="row">
-            <a href="#">
-                <img
-                    src="images/ads/advertise-here-a-748CTP.jpg"
-                    class="img-responsive col-md-12"
-                    style="width: 100%;height:100px;margin-bottom: 20px;"
-                />
-            </a>
-        </div>
       <div
           id="bodyContent"
           class="col-md-9 <?php echo $oscTemplate->getGridContentWidth(); ?> <?php echo ($oscTemplate->hasBlocks
