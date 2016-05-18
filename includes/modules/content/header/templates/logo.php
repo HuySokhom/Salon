@@ -19,10 +19,10 @@
 
         <ul class = "nav navbar-nav navbar-right">
             <li>
-                <a href = "#">Khmer</a>
+                <a href = "index.php?language=kh">Khmer</a>
             </li>
             <li>
-                <a href = "#">English</a>
+                <a href = "index.php?language=en">English</a>
             </li>
         </ul>
     </div>
@@ -31,15 +31,16 @@
 
         <ul class = "nav navbar-nav">
             <li class = "active">
-                <a href = "#">iOS</a>
+                <a href = "#"><?php echo HOME?></a>
             </li>
             <li>
-                <a href = "#">SVN</a>
+                <a href = "#"><?php echo ABOUT?></a>
             </li>
-            <li class = "dropdown">
-                <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-                    Java
-                </a>
+            <li>
+                <a href = "#"><?php echo GROUP?></a>
+            </li>
+            <li>
+                <a href = "#"><?php echo CAREER?></a>
             </li>
         </ul>
         <ul class = "nav navbar-nav navbar-right">

@@ -2,7 +2,7 @@
   $url = $_SERVER['REQUEST_URI'];
   $fullUrl = end((explode('/', $url)));
   // check url if is index page
-  if( $fullUrl === 'index.php' || $fullUrl == '' ){
+  if( strpos($fullUrl,'index.php') !== false || $fullUrl == '' ){
     $image_slider_query = tep_db_query("
         select
           text, image

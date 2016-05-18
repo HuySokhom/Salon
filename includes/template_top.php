@@ -19,6 +19,7 @@
   if (!$oscTemplate->hasBlocks('boxes_column_right')) {
     $oscTemplate->setGridContentWidth($oscTemplate->getGridContentWidth() + $oscTemplate->getGridColumnWidth());
   }
+    require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_DEFAULT);
 ?>
 <!DOCTYPE html>
 <html <?php echo HTML_PARAMS; ?>>
