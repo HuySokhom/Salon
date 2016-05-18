@@ -20,7 +20,7 @@
               class="navbar-toggle collapsed"
               data-toggle="collapse"
               data-target="#navbar"
-              style="background: #069;border: 0px;"
+              style="background: rgb(220,190,126);border: 0px;"
               >
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
