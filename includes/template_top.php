@@ -33,7 +33,7 @@
     <meta property="og:title" content="<?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
     <title><?php echo tep_output_string_protected($oscTemplate->getTitle()); ?></title>
     <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-    <link rel="shortcut icon" href="images/banners/logo.ico">
+    <link rel="shortcut icon" href="images/LHT_Logo.jpg">
     <link href="ext/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="custom.css" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Khmer:400normal|Didact+Gothic:400normal|Open+Sans:400normal|Handlee:400normal|Lato:400normal|Lora:400normal|Roboto:400normal|Nunito:400normal|Montserrat:400normal|Hanuman:400normal|Raleway:400normal&subset=all' rel="stylesheet" type="text/css">
