@@ -574,3 +574,6 @@ h1, .h1 {
 .navbar-right {
     margin-right: 0px;
 }
+.navbar-default {
+    background-color: #ffffff;
+}
