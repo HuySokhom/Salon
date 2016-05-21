@@ -41,12 +41,12 @@
 <script src="ext/bootstrap/js/bootstrap.min.js"></script>
 <?php echo $oscTemplate->getBlocks('footer_scripts'); ?>
 <script>
-    var selector = "ul .navbar-nav a";
+  $(document).ready( function(){
+    var selector = "ul a";
     $(selector).filter(function () {
-//        console.log( location.href.replace(/#.*/, "") ); console.log(this.href);
         return this.href == location.href.replace(/#.*/, "");
-    }).addClass("active");
-
+    }).css({'color': 'rgb(220,190,126)','font-weight': 'bold'});
+  });
 </script>
 </body>
 </html>

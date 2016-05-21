@@ -30,7 +30,7 @@
     <div class ="collapse navbar-collapse" id = "example-navbar-collapse">
 
         <ul class = "nav navbar-nav">
-            <li class = "active">
+            <li>
                 <a href = "index.html"><?php echo HOME?></a>
             </li>
             <li>
