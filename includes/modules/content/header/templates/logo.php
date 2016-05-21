@@ -31,16 +31,16 @@
 
         <ul class = "nav navbar-nav">
             <li>
-                <a href = "index.html"><?php echo HOME?></a>
+                <a href = "index.html"><?php echo HOME; ?></a>
             </li>
             <li>
-                <a href = "about.html"><?php echo ABOUT?></a>
+                <a href = "about.html"><?php echo ABOUT; ?></a>
             </li>
             <li>
-                <a href = "group.html"><?php echo GROUP?></a>
+                <a href = "group.html"><?php echo GROUP; ?></a>
             </li>
             <li>
-                <a href = "career.html"><?php echo CAREER?></a>
+                <a href = "career.html"><?php echo CAREER; ?></a>
             </li>
         </ul>
         <ul class = "nav navbar-nav navbar-right">
