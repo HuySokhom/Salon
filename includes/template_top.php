@@ -53,7 +53,9 @@
     <div class="container">
         <div class="subheader">
             <div id="email" class="pull-right" style=" margin-top:3px;">
-                <a href="index.html" style="margin-left:86px; font-size:18px;"> Home &nbsp;</a> | &nbsp;<a href="about.html" style="font-size:18px;">About Us &nbsp;</a> | &nbsp;<a href="contact.html" style="font-size:18px;">Contact Us</a><br /><br/>
+                | &nbsp;<a href="about.html" style="font-size:18px;"><?php echo ABOUT_US;?> &nbsp;</a>
+                | &nbsp;<a href="contact.html" style="font-size:18px;"><?php echo CONTACT_US;?></a>
+                <br /><br/>
                 <form class="navbar-form pull-right">
                     <a href="index.php?language=kh" style=" margin-left:0; font-size:18px;">ខ្មែរ</a>
                     |
@@ -81,11 +83,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li><a href="index.html">Home &nbsp;&nbsp;&nbsp;</a></li>
-            <li><a href="store.html">Store Directory &nbsp;&nbsp;&nbsp;</a></li>
-            <li><a href="event.html">Event & Promotion &nbsp;&nbsp;&nbsp;</a></li>
-            <li><a href="common.html">Common Area Information &nbsp;&nbsp;&nbsp;</a></li>
-            <li><a href="career.html">Career</a></li>
+            <li><a href=""><?php echo HOME;?> &nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="store.php"><?php echo STORE_DIRECTORY;?> &nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="event.php"><?php echo EVENT_AND_PROMOTION;?> &nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="common.php"><?php echo COMMON_AREA_INFORMAION;?> &nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="career.php"><?php echo CARRER;?></a></li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

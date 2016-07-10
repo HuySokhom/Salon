@@ -276,3 +276,12 @@ define('PRODUCT_SUBSCRIBED', '%s has been added to your Notification List');
 define('PRODUCT_UNSUBSCRIBED', '%s has been removed from your Notification List');
 define('PRODUCT_ADDED', '%s has been added to your Cart');
 define('PRODUCT_REMOVED', '%s has been removed from your Cart');
+
+define('HOME', 'ទំព័រដើម');
+define('CONTACT_US', 'ទាក់ទង​មក​ពួក​យើង');
+define('STORE_DIRECTORY', 'ហាងលក់');
+define('EVENT_AND_PROMOTION', 'ព្រឹត្តិការណ៍និងការ​ផ្ដល់​ជូន​ពិសេស
+');
+define('ABOUT_US', 'អំពី​ពួក​យើង');
+define('COMMON_AREA_INFORMAION', 'តំបន់ទូទៅ');
+define('CARRER', 'អាជីព');

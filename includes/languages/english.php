@@ -282,3 +282,14 @@ define('PRODUCT_SUBSCRIBED', '%s has been added to your Notification List');
 define('PRODUCT_UNSUBSCRIBED', '%s has been removed from your Notification List');
 define('PRODUCT_ADDED', '%s has been added to your Cart');
 define('PRODUCT_REMOVED', '%s has been removed from your Cart');
+
+
+define('ABOUT_US', 'About Us');
+define('HOME', 'Home');
+define('CONTACT_US', 'Contact Us');
+define('STORE_DIRECTORY', 'Store Directory');
+define('EVENT_AND_PROMOTION', 'Event & Promotion');
+define('COMMON_AREA_INFORMAION', 'Common Area Information');
+define('CARRER', 'Career');
+
+
