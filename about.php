@@ -4,7 +4,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 
 $content_query = tep_db_query("
     select * from content
-    where status = 1 and language_id = '" . $_SESSION['languages_id'] . "' and page_id = 1
+    where status = 1 and language_id = '" . $_SESSION['languages_id'] . "' and page_id = 2
     order by id desc
   ");
 $content_array = array();
@@ -61,18 +61,23 @@ while($content = tep_db_fetch_array($content_query)){
 </div>
 
     <div class="col-sm-9" style="background:non; height:40px; color:#103a71;">
-        <h3 style="margin-top:5px;">About Lucky Mall</h3>
+        <h3 style="margin-top:5px;">
+            <?php
+                echo $content_array[0]['title'];
+            ?>
+        </h3>
     </div>
     <div class="col-sm-5" style="margin-top:2%;">
         <a href="#" class="thumbnail">
             <img src="images/lucky-burger.jpg" alt="..." style="width:100%; height:350px;">
         </a>
-
     </div>
     <div class="col-sm-4" style="margin-top:2%;">
-        <p>Lucky Mall is the leading Market Expansion Services in cambodia. Our Ckients and Customers bdndfit from intergrated and tailor-made services along the entire value chain, offter any combination of sourcing,marketing,seles;distribution and after-sal support services.</p>
-        <p>A holding company eith a select portfoli o representing meny of the Group's non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin</p>
-        <p>A holding company eith a select portfoli o representing meny of the Group's non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin</p>
+        <p>
+            <?php
+                echo $content_array[0]['content'];
+            ?>
+        </p>
     </div>
 </div>
 </div>

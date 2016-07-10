@@ -47,7 +47,6 @@
     <?php echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
 <body style="background:#ddd;">
-<div class="container">
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -76,7 +75,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
             <img src="images/LUCKYMALL_LOGO_FINAL.png" style="margin-top:-95%; width:110px; height:120px; margin-left: 35%;">
         </a>
     </div>
@@ -94,7 +93,6 @@
     </div>
     <!-- /.container -->
 </nav>
-</div>
 
 <!-- Portfolio Item Row -->
 <div class="container">
