@@ -53,8 +53,8 @@
     <div class="container">
         <div class="subheader">
             <div id="email" class="pull-right" style=" margin-top:3px;">
-                | &nbsp;<a href="about.html" style="font-size:18px;"><?php echo ABOUT_US;?> &nbsp;</a>
-                | &nbsp;<a href="contact.html" style="font-size:18px;"><?php echo CONTACT_US;?></a>
+                <a href="about.php" style="font-size:18px;"><?php echo ABOUT_US;?> &nbsp;</a>
+                | &nbsp;<a href="contact_us.php" style="font-size:18px;"><?php echo CONTACT_US;?></a>
                 <br /><br/>
                 <form class="navbar-form pull-right">
                     <a href="index.php?language=kh" style=" margin-left:0; font-size:18px;">ខ្មែរ</a>

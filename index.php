@@ -14,7 +14,7 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
   $content_query = tep_db_query("
     select * from content
-    where status = 1 and language_id = '" . $_SESSION['languages_id'] . "'
+    where status = 1 and language_id = '" . $_SESSION['languages_id'] . "' and page_id = 1
     order by id desc
   ");
   $content_array = array();
