@@ -34,28 +34,90 @@
     <title><?php echo tep_output_string_protected($oscTemplate->getTitle()); ?></title>
     <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
     <link rel="shortcut icon" href="images/LHT_Logo.jpg">
-    <link href="ext/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="custom.css" rel="stylesheet">
+    <link href="ext/css/bootstrap.css" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Khmer:400normal|Didact+Gothic:400normal|Open+Sans:400normal|Handlee:400normal|Lato:400normal|Lora:400normal|Roboto:400normal|Nunito:400normal|Montserrat:400normal|Hanuman:400normal|Raleway:400normal&subset=all' rel="stylesheet" type="text/css">
-    <link href='ext/css/google_fonts.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="ext/css/font-awesome.css">
 <!--[if lt IE 9]>
     <script src="ext/js/html5shiv.js"></script>
     <script src="ext/js/respond.min.js"></script>
     <script src="ext/js/excanvas.min.js"></script>
 <![endif]-->
     <script src="ext/jquery/jquery-1.11.1.min.js"></script>
-<!-- font awesome -->
-    <link rel="stylesheet" href="ext/css/Font-Awesome-master/css/font-awesome.min.css">
+    <link href="ext/css/style.css" rel="stylesheet">
     <?php echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
-<body>
+<body style="background:#ddd;">
+<div class="container">
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="subheader">
+            <div id="email" class="pull-right" style=" margin-top:3px;">
+                <a href="index.html" style="margin-left:86px; font-size:18px;"> Home &nbsp;</a> | &nbsp;<a href="about.html" style="font-size:18px;">About Us &nbsp;</a> | &nbsp;<a href="contact.html" style="font-size:18px;">Contact Us</a><br /><br/>
+                <form class="navbar-form pull-right">
+                    <a href="index.php?language=kh" style=" margin-left:0; font-size:18px;">ខ្មែរ</a>
+                    |
+                    <a href="index.php?language=en" style="font-size:18px;">English</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /
 
-  <?php echo $oscTemplate->getContent('navigation'); ?>
-  <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>">
-    <div class="row">
-      <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
-      <div
-          id="bodyContent"
-          class="col-md-9 <?php echo $oscTemplate->getGridContentWidth(); ?> <?php echo ($oscTemplate->hasBlocks
-          ('boxes_column_left') ? 'col-md-push-' . $oscTemplate->getGridColumnWidth() : ''); ?>"
-      >
+  <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+            <img src="images/LUCKYMALL_LOGO_FINAL.png" style="margin-top:-95%; width:110px; height:120px; margin-left: 35%;">
+        </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="index.html">Home &nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="store.html">Store Directory &nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="event.html">Event & Promotion &nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="common.html">Common Area Information &nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="career.html">Career</a></li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+</div>
+
+<!-- Portfolio Item Row -->
+<div class="container">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img class="img-responsive" src="images/luckymail.JPG" alt="" style=" width:100%;">
+            </div>
+            <div class="item">
+                <img class="img-responsive" src="images/luckymail.JPG" alt="" style=" width:100%;">
+            </div>
+            <div class="item">
+                <img class="img-responsive" src="images/luckymail.JPG" alt="" style=" width:100%;">
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+
+</div>
