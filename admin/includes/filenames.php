@@ -58,7 +58,8 @@
   define('FILENAME_VEHICLES_TYPE', 'vehicles.php');
 define('FILENAME_LOCATION', 'location.php');
 define('FILENAME_IMAGE_SLIDER', 'image_slider.php');
-define('FILENAME_CATEGORIES_BRAND', 'categories_brand.php');
+define('FILENAME_CONTENT', 'content.php');
+define('FILENAME_STORE_DIRECTORY', 'store.php');
 
   
   

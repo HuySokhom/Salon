@@ -306,7 +306,8 @@ define('MODULE_CONTENT_BOOTSTRAP_ROW_DESCRIPTION', '<p>Content Width can be 12 o
 define('BOX_CATALOG_VEHICLES_TYPE', 'Vehicles');
 define('BOX_CATALOG_LOCATION', 'Location');
 define('BOX_CATALOG_IMAGE_SLIDER', 'Image Slider');
-define('BOX_CATALOG_CATEGORIES_BRAND', 'Categories Brand');
+define('BOX_CATALOG_CONTENT', 'Content');
+define('BOX_CATALOG_STIRE_DIRECTORY', 'Store And Directory');
 
 
 

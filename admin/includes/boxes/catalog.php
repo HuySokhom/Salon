@@ -59,10 +59,15 @@
           'link' => tep_href_link(FILENAME_IMAGE_SLIDER)
       ),
       array(
-          'code' => FILENAME_CATEGORIES_BRAND,
-          'title' => BOX_CATALOG_CATEGORIES_BRAND,
-          'link' => tep_href_link(FILENAME_CATEGORIES_BRAND)
-      )
+          'code' => FILENAME_CONTENT,
+          'title' => BOX_CATALOG_CONTENT,
+          'link' => tep_href_link(FILENAME_CONTENT)
+      ),
+        array(
+            'code' => FILENAME_STORE_DIRECTORY,
+            'title' => BOX_CATALOG_STIRE_DIRECTORY,
+            'link' => tep_href_link(FILENAME_STORE_DIRECTORY)
+        )
     )
   );
 ?>
