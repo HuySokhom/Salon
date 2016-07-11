@@ -66,28 +66,16 @@
           )
         ");
         }
-
-
         $messageStack->add_session('Complete: Save Success.', 'success');
+        tep_redirect(tep_href_link(FILENAME_STORE_DIRECTORY));
         break;
-//      case 'add':
-//        tep_db_query("
-//          insert into
-//            store_directory
-//          (
-//              title,
-//              type,
-//              image
-//          )
-//          values
-//          (
-//              '" . $_POST['title'] . "',
-//              '" . $_POST['content'] . "',
-//              '" . tep_db_input($store_logo->filename) . "',
-//          )
-//        ");
-//        $messageStack->add_session('Complete: Insert Success.', 'success');
-//        break;
+      case 'delete':
+        tep_db_query("
+              delete from store_directory where id = '".(int)$id."'
+            ");
+        $messageStack->add_session('Complete: Delete Success.', 'success');
+        tep_redirect(tep_href_link(FILENAME_STORE_DIRECTORY));
+        break;
     }
   }
 
@@ -150,8 +138,8 @@
         <td class="dataTableHeadingContent" width="5%">ID</td>
         <td class="dataTableHeadingContent" width="30%">Title</td>
         <td class="dataTableHeadingContent" width="30%">Image</td>
-        <td class="dataTableHeadingContent" width="60%">Type</td>
-        <td class="dataTableHeadingContent" align="right" width="5%">Action</td>
+        <td class="dataTableHeadingContent" width="20%">Type</td>
+        <td class="dataTableHeadingContent" align="right" width="10%">Action</td>
       </tr>
       <?php
       $content_query_raw = tep_db_query("select * from store_directory order by id desc");
@@ -161,7 +149,14 @@
               <td class="dataTableContent">' . $content['title'] . '</td>
               <td class="dataTableContent">' . $content['image'] . '</td>
               <td class="dataTableContent">' . $content['type'] . '</td>
-              <td class="dataTableContent"><a href="store.php?ID=' . $content['id'] . '"><button>Edit</button></a></td>
+              <td class="dataTableContent">
+                <a href="store.php?ID=' . $content['id'] . '">
+                  <button>Edit</button>
+                </a>
+                <a href="store.php?ID=' . $content['id'] . '&action=delete">
+                  <button>Delete</button>
+                </a>
+              </td>
           </tr>
         ';
       }
