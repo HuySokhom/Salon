@@ -103,15 +103,17 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-            <div class="item active">
-                <img class="img-responsive" src="images/luckymail.JPG" alt="" style=" width:100%;">
-            </div>
-            <div class="item">
-                <img class="img-responsive" src="images/luckymail.JPG" alt="" style=" width:100%;">
-            </div>
-            <div class="item">
-                <img class="img-responsive" src="images/luckymail.JPG" alt="" style=" width:100%;">
-            </div>
+        <?php
+        $image_query_raw = tep_db_query("select * from image_slider order by sort_order asc");
+        while ($image = tep_db_fetch_array($image_query_raw)) {
+            $active = $image['sort_order'] == 0 ? "active"  : "";
+            echo '
+                <div class="item '. $active .'">
+                    <img class="img-responsive" src="'. $image['image'] .'" style=" width:100%;">
+                </div>
+            ';
+        }
+        ?>
         </div>
 
         <!-- Controls -->

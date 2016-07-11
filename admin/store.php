@@ -21,7 +21,8 @@
     $store_logo->set_destination(DIR_FS_CATALOG_IMAGES);
     switch ($action) {
       case 'save':
-        tep_db_query("
+        if($id){
+          tep_db_query("
           update
             store_directory
           set
@@ -29,23 +30,27 @@
             type = '". $_POST['type'] ."'
           where
               id = '" . $id . "'"
-        );
-        if ($store_logo->parse()) {
-          if ($store_logo->save()) {
-            tep_db_query("
+          );
+          if ($store_logo->parse()) {
+            if ($store_logo->save()) {
+              tep_db_query("
               update
                 store_directory
               set
                 image = 'images/" . tep_db_input($store_logo->filename) . "'
               where
                   id = '" . $id . "'"
-                );
+              );
+            }
           }
-        }
-        $messageStack->add_session('Complete: Update Success.', 'success');
-        break;
-      case 'add':
-        tep_db_query("
+        }else{
+          $image = '';
+          if ($store_logo->parse()) {
+            if ($store_logo->save()) {
+              $image = 'images/' . tep_db_input($store_logo->filename);
+            }
+          }
+          tep_db_query("
           insert into
             store_directory
           (
@@ -56,12 +61,33 @@
           values
           (
               '" . $_POST['title'] . "',
-              '" . $_POST['content'] . "',
-              '" . tep_db_input($store_logo->filename) . "',
+              '" . $_POST['type'] . "',
+              '" . $image . "'
           )
         ");
-        $messageStack->add_session('Complete: Insert Success.', 'success');
+        }
+
+
+        $messageStack->add_session('Complete: Save Success.', 'success');
         break;
+//      case 'add':
+//        tep_db_query("
+//          insert into
+//            store_directory
+//          (
+//              title,
+//              type,
+//              image
+//          )
+//          values
+//          (
+//              '" . $_POST['title'] . "',
+//              '" . $_POST['content'] . "',
+//              '" . tep_db_input($store_logo->filename) . "',
+//          )
+//        ");
+//        $messageStack->add_session('Complete: Insert Success.', 'success');
+//        break;
     }
   }
 
@@ -73,7 +99,7 @@
 ?>
   <h2 class="pageHeading">Store And Directory</h2>
 <?php
-  if($id > 0){
+  if($id > 0 || $action == 'add'){
     $store_query_raw = tep_db_query("select * from store_directory where id = '". $id ."'");
     $store = tep_db_fetch_array($store_query_raw);
     echo tep_draw_form('logo', FILENAME_STORE_DIRECTORY, 'ID='.$id.'&action=save', 'post', 'enctype="multipart/form-data"');
@@ -104,7 +130,10 @@
         <td>
           <?php echo tep_draw_file_field('store_logo');?>
           <br>
-          <img src="<?php echo '../' . $store['image'];?>" style="width: 100px;"/>
+          <?php if($store['image']){
+              echo '<img src="../' . $store['image'] . '" style="width: 100px;"/>';
+            }
+          ?>
         </td>
       </tr>
     </table>
@@ -114,7 +143,7 @@
     }
   else{
   ?>
-    <button><a href="store.php?ID=0">Add</a></button>
+    <button><a href="store.php?action=add">Add</a></button>
     <br/><br/>
     <table border="0" width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
       <tr class="dataTableHeadingRow">
