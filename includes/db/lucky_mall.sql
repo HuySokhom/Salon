@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-07-11 14:18:27
+Date: 2016-07-11 21:46:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -288,7 +288,7 @@ CREATE TABLE `common` (
 -- Records of common
 -- ----------------------------
 INSERT INTO `common` VALUES ('1', 'Site Area:\r\n\r\nHeight:', 'images/common area.jpg');
-INSERT INTO `common` VALUES ('2', 'Site Area:\r\n\r\nHeight:', 'images/lucky mall.jpg');
+INSERT INTO `common` VALUES ('2', '<p>Site Area:12819</p>\r\n<p>Height:121298</p>\r\n<p>please read more....</p>', 'images/2066_music_art.jpg');
 
 -- ----------------------------
 -- Table structure for `configuration`
@@ -446,7 +446,7 @@ INSERT INTO `configuration` VALUES ('160', 'Check IP Address', 'SESSION_CHECK_IP
 INSERT INTO `configuration` VALUES ('161', 'Prevent Spider Sessions', 'SESSION_BLOCK_SPIDERS', 'True', 'Prevent known spiders from starting a session.', '15', '6', null, '2015-02-26 16:56:18', null, 'tep_cfg_select_option(array(\'True\', \'False\'), ');
 INSERT INTO `configuration` VALUES ('162', 'Recreate Session', 'SESSION_RECREATE', 'True', 'Recreate the session to generate a new session ID when the customer logs on or creates an account (PHP >=4.1 needed).', '15', '7', null, '2015-02-26 16:56:18', null, 'tep_cfg_select_option(array(\'True\', \'False\'), ');
 INSERT INTO `configuration` VALUES ('163', 'Last Update Check Time', 'LAST_UPDATE_CHECK_TIME', '', 'Last time a check for new versions of osCommerce was run', '6', '0', null, '2015-02-26 16:56:18', null, null);
-INSERT INTO `configuration` VALUES ('164', 'Store Logo', 'STORE_LOGO', 'LUCKYMALL_LOGO_FINAL.png', 'This is the filename of your Store Logo.  This should be updated at admin > configuration > Store Logo', '6', '1000', null, '2015-02-26 16:56:19', null, null);
+INSERT INTO `configuration` VALUES ('164', 'Store Logo', 'STORE_LOGO', 'youtube_icon.png', 'This is the filename of your Store Logo.  This should be updated at admin > configuration > Store Logo', '6', '1000', null, '2015-02-26 16:56:19', null, null);
 INSERT INTO `configuration` VALUES ('165', 'Bootstrap Container', 'BOOTSTRAP_CONTAINER', 'container', 'What type of container should the page content be shown in? See http://getbootstrap.com/css/#overview-container', '16', '1', '2015-11-11 16:40:15', '2015-02-26 16:56:19', null, 'tep_cfg_select_option(array(\'container-fluid\', \'container\'), ');
 INSERT INTO `configuration` VALUES ('166', 'Bootstrap Content', 'BOOTSTRAP_CONTENT', '6', 'What width should the page content default to?  (8 = two thirds width, 6 = half width, 4 = one third width) Note that the Side Column(s) will adjust automatically.', '16', '2', '2015-11-11 16:40:46', '2015-02-26 16:56:19', null, 'tep_cfg_select_option(array(\'8\', \'6\', \'4\'), ');
 INSERT INTO `configuration` VALUES ('167', 'Enable PayPal Express Checkout', 'MODULE_PAYMENT_PAYPAL_EXPRESS_STATUS', 'True', 'Do you want to accept PayPal Express Checkout payments?', '6', '1', null, '2015-02-26 16:56:52', null, 'tep_cfg_select_option(array(\'True\', \'False\'), ');
@@ -1175,15 +1175,15 @@ CREATE TABLE `event` (
   `type` varchar(127) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of event
 -- ----------------------------
 INSERT INTO `event` VALUES ('1', 'Lucky Supermarket', 'images/buger.jpg', 'all', '2016-07-11 10:48:25');
 INSERT INTO `event` VALUES ('2', 'Lucky Supermarket', 'images/buger.jpg', 'all', '2016-07-11 10:48:28');
-INSERT INTO `event` VALUES ('3', 'Lucky Mall', 'images/dfaae18b-f7ff-452c-b736-2cd13aec979c-large.jpeg', 'all', '2016-07-11 10:48:53');
-INSERT INTO `event` VALUES ('4', 'Lucky Mall', 'images/dfaae18b-f7ff-452c-b736-2cd13aec979c-large.jpeg', 'all', '2016-07-11 10:48:55');
+INSERT INTO `event` VALUES ('3', 'Lucky Mall', 'images/dfaae18b-f7ff-452c-b736-2cd13aec979c-large.jpeg', 'fashion', '2016-07-11 10:48:53');
+INSERT INTO `event` VALUES ('4', 'Lucky Mall 12', 'images/dfaae18b-f7ff-452c-b736-2cd13aec979c-large.jpeg', 'food', '2016-07-11 10:48:55');
 
 -- ----------------------------
 -- Table structure for `geo_zones`
@@ -1216,16 +1216,17 @@ CREATE TABLE `image_slider` (
   `status` tinyint(1) NOT NULL,
   `created` datetime NOT NULL,
   `sort_order` int(11) NOT NULL,
+  `image_view` varchar(27) DEFAULT 'No',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of image_slider
 -- ----------------------------
-INSERT INTO `image_slider` VALUES ('66', 'test', 'slide-4.1463307878.jpg', 'image-thumbnail/2.1458881383.jpg', '', '0', '2015-12-31 12:05:49', '1');
-INSERT INTO `image_slider` VALUES ('76', 'ZXSD', 'slide-3.1463307886.jpg', 'image-thumbnail/business_card_08_1.1458881388.jpg', '', '0', '2015-12-31 14:19:01', '3');
-INSERT INTO `image_slider` VALUES ('79', 'ឋខ', 'slide-1.1463307899.jpg', 'image-thumbnail/2.1458881362.jpg', '', '0', '2015-12-31 14:20:02', '0');
-INSERT INTO `image_slider` VALUES ('81', 'ស​ៗ\"', '05.jpg', 'image-thumbnail/Clean+Corporate+Business+Card+Template.1458881368.jpg', '', '0', '2015-12-31 14:20:44', '0');
+INSERT INTO `image_slider` VALUES ('85', '243', 'images/05.jpg', '', '', '0', '0000-00-00 00:00:00', '0', 'No');
+INSERT INTO `image_slider` VALUES ('86', 'er', 'images/05.jpg', '', '', '0', '0000-00-00 00:00:00', '1', 'Yes');
+INSERT INTO `image_slider` VALUES ('88', 'ASc', 'images/caption.jpg', '', '', '0', '0000-00-00 00:00:00', '1', 'Yes');
+INSERT INTO `image_slider` VALUES ('89', 'AS', 'images/1.jpg', '', '', '0', '0000-00-00 00:00:00', '1', 'No');
 
 -- ----------------------------
 -- Table structure for `languages`
@@ -2036,37 +2037,8 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('05ffgrtfrvg01g9rjuavtmef46', '1459350311', 'language|s:7:\"english\";languages_id|s:1:\"1\";auth_ignore|b:1;admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('0qpsq9qhs1kds18eoa4jq90dm2', '1462593584', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('29sba40sku5aqro4ggi70q59c6', '1463559146', 'sessiontoken|s:32:\"fbff69632c834d9119431e07a8f87210\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:5:\"khmer\";languages_id|s:1:\"2\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"kh\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('39ed7ssc7leou1a85sm6meilh4', '1463307211', 'sessiontoken|s:32:\"28b0724c4baab24d700bfadb015ee119\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:8:\"ndex.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"en\";}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:9:\"login.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:22:\"password_forgotten.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('3cf4mossip4lgil6v4r8qhkm41', '1462603800', 'sessiontoken|s:32:\"29fb4cf83b5fcd075c775b03a4585e87\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:16:\"product_info.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:11:\"products_id\";s:3:\"137\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('3fvpb6l9hmc3tg80gpr3778sc1', '1461403211', 'sessiontoken|s:32:\"02c6be224b812fdabe93575d38fbff8c\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"cPath\";s:2:\"25\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"login.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}');
-INSERT INTO `sessions` VALUES ('47n3629ck3aa8c8j9an7tvb913', '1461597654', 'sessiontoken|s:32:\"cf7c7a705285614431c7002ea16d6cbf\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:9:\"login.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:18:\"create_account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}');
-INSERT INTO `sessions` VALUES ('4ev9404m5a418ms49ls6sbqqn2', '1468126678', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('5f8bkujonlfd78bet6q2cgc7u7', '1468144922', 'sessiontoken|s:32:\"b499c25f57e8dcc6ee3dbf05f766b865\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"en\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"about.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('6tt0umbok4q0c7723ukq9bp855', '1462603840', 'sessiontoken|s:32:\"4e3ba7f588420014f60c80f54a1b8de4\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:4:\".php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:5:\"cPath\";s:2:\"25\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('8afiftre0daf7rik05uavcn2t3', '1463908269', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('9b0j4rnobaugvke0m4frg0bfc5', '1468130025', 'sessiontoken|s:32:\"c18f14d712324eba788bbdfa13f46f19\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('at7po910525o2asd1e5bl2ph66', '1462799981', 'sessiontoken|s:32:\"5fc93d1d2716394cf288e172c98e6a6d\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('cef6v2vaba1ip0aei2pu3p2p94', '1464271197', 'sessiontoken|s:32:\"f2d820e6470af3b201cf663c410036d4\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"about.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('d8odo2rotrujg9hfmnek00nbt6', '1463199988', 'sessiontoken|s:32:\"28f30e81b6bc4d85357517dbca4fa108\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('e365h7370epqisv35addd1b2n6', '1463558898', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('f85ipo0es3e2228p9hqdeupvj1', '1463752153', 'sessiontoken|s:32:\"04f7adcb84129265d14a6487693f7abb\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:5:\"khmer\";languages_id|s:1:\"2\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('fjinc6vfcchcu5t7msuk3c36s5', '1468221443', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('i33d3kpbcl25jfaeft7fpq7fi4', '1468133489', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('j2na13jfbnqcnjrsgpeojea5c6', '1468125889', 'sessiontoken|s:32:\"1d4edfafa79692b1915834713ca8b0dc\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('j6a8js2fup18mdmogddk8cbmh1', '1463306905', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('jjrncnto1karrnpfmnaidnb1r1', '1463846751', 'sessiontoken|s:32:\"b084c1bb4ad2baa1048bab31d1b93bc8\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"group.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('k7pdbg4heu8ej4smqljivm23e2', '1468077255', 'sessiontoken|s:32:\"139abc61d026a77dcf2b0aba97d23390\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:5:\"khmer\";languages_id|s:1:\"2\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"kh\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:13:\"api/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('m212uhjv2pfqi7emolibpl4e61', '1468168700', 'sessiontoken|s:32:\"f95c87e108a8ac94ce4f2b53a975164b\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"en\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:10:\"career.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:9:\"about.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:14:\"contact_us.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('m49kqau04querlde3bu63n1t77', '1462803559', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('nut4uh8m0m8vf6upmom9e97ic1', '1463460920', 'sessiontoken|s:32:\"4b739668124d051a713ac3df6f53d258\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"en\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('p8tc08anqk8odimjkmifp8pct5', '1468167055', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('pjof7t1me7iu3i317sl20kjrg2', '1468220916', 'sessiontoken|s:32:\"e53403225343e94b260cdcf127fbbe6a\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:10:\"common.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('ptk9revho41sct7d4lecdsknu2', '1463671292', 'sessiontoken|s:32:\"449fbfb2b92610f008d6f978715c52b0\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"en\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"about.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:9:\"group.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:10:\"career.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('rrrrlks5oblat20s590g8e15d1', '1462786945', 'sessiontoken|s:32:\"04639583d136d1ea2494f6f748ec96b4\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:5:\"cPath\";s:2:\"23\";s:6:\"osCsid\";s:26:\"rrrrlks5oblat20s590g8e15d1\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('vvor952on7q584i0odca296hk1', '1463199988', 'sessiontoken|s:32:\"494328cc869da314a3ab300f0a206107\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:10:\"/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('fjinc6vfcchcu5t7msuk3c36s5', '1468248155', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('pjof7t1me7iu3i317sl20kjrg2', '1468248364', 'sessiontoken|s:32:\"e53403225343e94b260cdcf127fbbe6a\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"event.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 
 -- ----------------------------
 -- Table structure for `specials`
@@ -2100,7 +2072,7 @@ CREATE TABLE `store_directory` (
   `type` varchar(127) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of store_directory
@@ -2110,10 +2082,14 @@ INSERT INTO `store_directory` VALUES ('2', 'Lucky Supermarket', 'images/supermar
 INSERT INTO `store_directory` VALUES ('3', 'Care Pharma', 'images/1402919.jpg', 'all', '2016-07-11 10:00:11');
 INSERT INTO `store_directory` VALUES ('4', 'Lucky Sabo How', 'images/lucky_zabohow.png', 'all', '2016-07-11 10:01:50');
 INSERT INTO `store_directory` VALUES ('5', 'Lucky Mall', 'images/miss-it-if-you-do-not.jpg', 'all', '2016-07-11 10:01:53');
-INSERT INTO `store_directory` VALUES ('6', 'Lucky Burger', 'images/logo buger.jpg', 'all', '2016-07-11 10:01:52');
+INSERT INTO `store_directory` VALUES ('6', 'Lucky Burger 212', 'images/2066_music_art.jpg', 'intertainment', '2016-07-11 10:01:52');
 INSERT INTO `store_directory` VALUES ('7', 'Canadia  Bank', 'images/canadia-bank-a.png', 'all', '2016-07-11 10:01:59');
 INSERT INTO `store_directory` VALUES ('8', 'Acleda Bank', 'images/logo_acleda_large.gif', 'all', '2016-07-11 10:01:57');
-INSERT INTO `store_directory` VALUES ('9', 'ANZ Royal Blue', 'images/ANZ_Royal_H_blue.jpg', 'all', '2016-07-11 10:02:01');
+INSERT INTO `store_directory` VALUES ('9', 'ANZ Royal Blue 11', 'images/05.jpg', 'fashion', '2016-07-11 10:02:01');
+INSERT INTO `store_directory` VALUES ('10', 'FAET @#$T$2y', 'images/websolutions.jpg', 'service', null);
+INSERT INTO `store_directory` VALUES ('11', 'ASD@##233232323', 'images/2066_music_art.jpg', 'food', null);
+INSERT INTO `store_directory` VALUES ('12', 'zXc QW', '', 'intertainment', null);
+INSERT INTO `store_directory` VALUES ('14', 'SCQ ', 'images/Capture.JPG', 'service', null);
 
 -- ----------------------------
 -- Table structure for `tax_class`
@@ -2172,7 +2148,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('0', 'Guest', 'pjof7t1me7iu3i317sl20kjrg2', '', '1468220486', '1468220915', '/Salon/common.php');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 'pjof7t1me7iu3i317sl20kjrg2', '', '1468247349', '1468248364', '/Salon/event.php');
 
 -- ----------------------------
 -- Table structure for `zones`

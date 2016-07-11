@@ -16,7 +16,8 @@
                 image_slider
               set
                 text = '". $_POST['text'] ."',
-                sort_order = '". $_POST['sort_order'] ."'
+                sort_order = '". $_POST['sort_order'] ."',
+                image_view = '". $_POST['page_view'] ."'
               where
                   id = '" . $id . "'"
               );
@@ -45,12 +46,14 @@
               (
                   text,
                   sort_order,
+                  image_view,
                   image
               )
               values
               (
                   '" . $_POST['text'] . "',
                   '" . $_POST['sort_order'] . "',
+                  '" . $_POST['page_view'] . "',
                   '" . $image . "'
               )
             ");
@@ -99,6 +102,16 @@
         </td>
       </tr>
       <tr>
+        <td><b>Image Left View:</b></td>
+        <td>
+          <select name="page_view">
+              <option value="">--select--</option>
+              <option value="Yes" <?php echo $store['image_view'] === 'Yes' ? 'selected' : '' ?>>Yes</option>
+              <option value="No" <?php echo $store['image_view'] === 'No' ? 'selected' : '' ?>>No</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
         <td><b>Image:</b></td>
         <td>
           <?php echo tep_draw_file_field('store_logo');?>
@@ -121,10 +134,11 @@
     <table border="0" width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
       <tr class="dataTableHeadingRow">
         <td class="dataTableHeadingContent" width="5%">ID</td>
-        <td class="dataTableHeadingContent" width="30%">Title</td>
+        <td class="dataTableHeadingContent" width="20%">Title</td>
         <td class="dataTableHeadingContent" width="30%">Image</td>
         <td class="dataTableHeadingContent" width="20%">Sort Order</td>
-        <td class="dataTableHeadingContent" align="right" width="10%">Action</td>
+        <td class="dataTableHeadingContent" width="10%">Image left</td>
+        <td class="dataTableHeadingContent" align="right" width="15%">Action</td>
       </tr>
       <?php
       $content_query_raw = tep_db_query("select * from image_slider order by sort_order asc");
@@ -134,6 +148,7 @@
               <td class="dataTableContent">' . $content['text'] . '</td>
               <td class="dataTableContent">' . $content['image'] . '</td>
               <td class="dataTableContent">' . $content['sort_order'] . '</td>
+              <td class="dataTableContent">' . $content['image_view'] . '</td>
               <td class="dataTableContent"><a href="image_slider.php?ID=' . $content['id'] . '"><button>Edit</button></a>
                 <a href="image_slider.php?ID=' . $content['id'] . '&action=delete"><button>Delete</button></a>
               </td>

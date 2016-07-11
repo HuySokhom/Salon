@@ -104,7 +104,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
         <?php
-        $image_query_raw = tep_db_query("select * from image_slider order by sort_order asc");
+        $image_query_raw = tep_db_query("select * from image_slider where image_view = 'No' order by sort_order asc");
         while ($image = tep_db_fetch_array($image_query_raw)) {
             $active = $image['sort_order'] == 0 ? "active"  : "";
             echo '
