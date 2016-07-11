@@ -13,45 +13,45 @@
   $cl_box_groups[] = array(
     'heading' => BOX_HEADING_CATALOG,
     'apps' => array(
+//      array(
+//        'code' => FILENAME_CATEGORIES,
+//        'title' => BOX_CATALOG_CATEGORIES_PRODUCTS,
+//        'link' => tep_href_link(FILENAME_CATEGORIES)
+//      ),
+//      array(
+//        'code' => FILENAME_PRODUCTS_ATTRIBUTES,
+//        'title' => BOX_CATALOG_CATEGORIES_PRODUCTS_ATTRIBUTES,
+//        'link' => tep_href_link(FILENAME_PRODUCTS_ATTRIBUTES)
+//      ),
+//      array(
+//        'code' => FILENAME_MANUFACTURERS,
+//        'title' => BOX_CATALOG_MANUFACTURERS,
+//        'link' => tep_href_link(FILENAME_MANUFACTURERS)
+//      ),
+//      array(
+//        'code' => FILENAME_REVIEWS,
+//        'title' => BOX_CATALOG_REVIEWS,
+//        'link' => tep_href_link(FILENAME_REVIEWS)
+//      ),
+//      array(
+//        'code' => FILENAME_SPECIALS,
+//        'title' => BOX_CATALOG_SPECIALS,
+//        'link' => tep_href_link(FILENAME_SPECIALS)
+//      ),
+//      array(
+//        'code' => FILENAME_PRODUCTS_EXPECTED,
+//        'title' => BOX_CATALOG_PRODUCTS_EXPECTED,
+//        'link' => tep_href_link(FILENAME_PRODUCTS_EXPECTED)
+//      ),
       array(
-        'code' => FILENAME_CATEGORIES,
-        'title' => BOX_CATALOG_CATEGORIES_PRODUCTS,
-        'link' => tep_href_link(FILENAME_CATEGORIES)
+        'code' => FILENAME_COMMON,
+        'title' => BOX_CATALOG_COMMON,
+        'link' => tep_href_link(FILENAME_COMMON)
       ),
       array(
-        'code' => FILENAME_PRODUCTS_ATTRIBUTES,
-        'title' => BOX_CATALOG_CATEGORIES_PRODUCTS_ATTRIBUTES,
-        'link' => tep_href_link(FILENAME_PRODUCTS_ATTRIBUTES)
-      ),
-      array(
-        'code' => FILENAME_MANUFACTURERS,
-        'title' => BOX_CATALOG_MANUFACTURERS,
-        'link' => tep_href_link(FILENAME_MANUFACTURERS)
-      ),
-      array(
-        'code' => FILENAME_REVIEWS,
-        'title' => BOX_CATALOG_REVIEWS,
-        'link' => tep_href_link(FILENAME_REVIEWS)
-      ),
-      array(
-        'code' => FILENAME_SPECIALS,
-        'title' => BOX_CATALOG_SPECIALS,
-        'link' => tep_href_link(FILENAME_SPECIALS)
-      ),
-      array(
-        'code' => FILENAME_PRODUCTS_EXPECTED,
-        'title' => BOX_CATALOG_PRODUCTS_EXPECTED,
-        'link' => tep_href_link(FILENAME_PRODUCTS_EXPECTED)
-      ),
-      array(
-        'code' => FILENAME_VEHICLES_TYPE,
-        'title' => BOX_CATALOG_VEHICLES_TYPE,
-        'link' => tep_href_link(FILENAME_VEHICLES_TYPE)
-      ),
-      array(
-          'code' => FILENAME_LOCATION,
-          'title' => BOX_CATALOG_LOCATION,
-          'link' => tep_href_link(FILENAME_LOCATION)
+          'code' => FILENAME_EVENT,
+          'title' => BOX_CATALOG_EVENT,
+          'link' => tep_href_link(FILENAME_EVENT)
       ),
       array(
           'code' => FILENAME_IMAGE_SLIDER,

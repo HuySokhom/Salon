@@ -303,8 +303,8 @@ define('WARNING_NO_FILE_UPLOADED', 'Warning: No file uploaded.');
 define('MODULE_CONTENT_BOOTSTRAP_ROW_DESCRIPTION', '<p>Content Width can be 12 or less per column per row.</p><p>12/12 = 100% width, 6/12 = 50% width, 4/12 = 33% width.</p><p>Total of all columns in any one row must equal 12 (eg:  3 boxes of 4 columns each, 1 box of 12 columns and so on).</p>');
 
 // add new file name vehicles
-define('BOX_CATALOG_VEHICLES_TYPE', 'Vehicles');
-define('BOX_CATALOG_LOCATION', 'Location');
+define('BOX_CATALOG_COMMON', 'Common Area information');
+define('BOX_CATALOG_EVENT', 'Event & Promotion');
 define('BOX_CATALOG_IMAGE_SLIDER', 'Image Slider');
 define('BOX_CATALOG_CONTENT', 'Content');
 define('BOX_CATALOG_STIRE_DIRECTORY', 'Store And Directory');

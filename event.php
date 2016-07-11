@@ -66,7 +66,7 @@ if($HTTP_GET_VARS['type']){
 	</div>
    <div class="col-sm-9" style="margin-top:-1%;"> 
  	<ul class="nav navbar-nav">
-		<li><a href="event.php?type=all" style="color:#103a71;"><b>All</b></a></li>
+		<li><a href="event.php" style="color:#103a71;"><b>All</b></a></li>
 		<li><a href="event.php?type=fashion" style="color:#103a71;"><b>Fashion</b></a></li>
 		<li><a href="event.php?type=shopping" style="color:#103a71;"><b>Shopping</b></a></li>
 		<li><a href="event.php?type=food" style="color:#103a71;"><b>Food & Beverage</b></a></li>
