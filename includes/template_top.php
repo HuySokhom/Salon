@@ -45,6 +45,9 @@
     <script src="ext/jquery/jquery-1.11.1.min.js"></script>
     <link href="ext/css/style.css" rel="stylesheet">
     <?php echo $oscTemplate->getBlocks('header_tags'); ?>
+    <link href="ext/css/hover.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="ext/css/half-slider.css" rel="stylesheet">
 </head>
 <body style="background:#ddd;">
 <!-- Navigation -->

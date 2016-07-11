@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-07-10 23:38:53
+Date: 2016-07-11 11:26:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `action_recorder` (
   KEY `idx_action_recorder_user_id` (`user_id`),
   KEY `idx_action_recorder_identifier` (`identifier`),
   KEY `idx_action_recorder_date_added` (`date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of action_recorder
@@ -46,6 +46,7 @@ INSERT INTO `action_recorder` VALUES ('6', 'ar_admin_login', '1', 'admin', '', '
 INSERT INTO `action_recorder` VALUES ('7', 'ar_admin_login', '1', 'admin', '', '1', '2016-07-10 11:49:54');
 INSERT INTO `action_recorder` VALUES ('8', 'ar_admin_login', '1', 'admin', '', '1', '2016-07-10 13:51:25');
 INSERT INTO `action_recorder` VALUES ('9', 'ar_admin_login', '1', 'admin', '', '1', '2016-07-10 23:09:32');
+INSERT INTO `action_recorder` VALUES ('10', 'ar_admin_login', '1', 'admin', '', '1', '2016-07-11 11:24:36');
 
 -- ----------------------------
 -- Table structure for `address_book`
@@ -272,6 +273,23 @@ INSERT INTO `colors` VALUES ('9', '#666666', 'images/img9.jpg', '1', '2015-03-13
 INSERT INTO `colors` VALUES ('10', '#b76904', 'images/img10.jpg', '1', '2015-03-13 13:21:51', '2015-03-13 13:21:51');
 
 -- ----------------------------
+-- Table structure for `common`
+-- ----------------------------
+DROP TABLE IF EXISTS `common`;
+CREATE TABLE `common` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` text,
+  `image` varchar(127) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of common
+-- ----------------------------
+INSERT INTO `common` VALUES ('1', 'Site Area:\r\n\r\nHeight:', 'images/common area.jpg');
+INSERT INTO `common` VALUES ('2', 'Site Area:\r\n\r\nHeight:', 'images/lucky mall.jpg');
+
+-- ----------------------------
 -- Table structure for `configuration`
 -- ----------------------------
 DROP TABLE IF EXISTS `configuration`;
@@ -474,7 +492,7 @@ INSERT INTO `configuration` VALUES ('207', 'Sort Order', 'MODULE_HEADER_TAGS_TAB
 INSERT INTO `configuration` VALUES ('208', 'Enable Colorbox Script', 'MODULE_HEADER_TAGS_PRODUCT_COLORBOX_STATUS', 'True', 'Do you want to enable the Colorbox Scripts?', '6', '1', null, '2015-02-26 16:56:54', null, 'tep_cfg_select_option(array(\'True\', \'False\'), ');
 INSERT INTO `configuration` VALUES ('209', 'Pages', 'MODULE_HEADER_TAGS_PRODUCT_COLORBOX_PAGES', 'product_info.php', 'The pages to add the Colorbox Scripts to.', '6', '0', null, '2015-02-26 16:56:54', 'ht_product_colorbox_show_pages', 'ht_product_colorbox_edit_pages(');
 INSERT INTO `configuration` VALUES ('210', 'Sort Order', 'MODULE_HEADER_TAGS_PRODUCT_COLORBOX_SORT_ORDER', '900', 'Sort order of display. Lowest is displayed first.', '6', '0', null, '2015-02-26 16:56:54', null, null);
-INSERT INTO `configuration` VALUES ('211', 'Installed Modules', 'MODULE_ADMIN_DASHBOARD_INSTALLED', 'd_admin_logins.php;d_total_customers.php;d_total_revenue.php', 'List of Administration Tool Dashboard module filenames separated by a semi-colon. This is automatically updated. No need to edit.', '6', '0', '2015-11-03 13:05:43', '2015-02-26 16:56:54', null, null);
+INSERT INTO `configuration` VALUES ('211', 'Installed Modules', 'MODULE_ADMIN_DASHBOARD_INSTALLED', '', 'List of Administration Tool Dashboard module filenames separated by a semi-colon. This is automatically updated. No need to edit.', '6', '0', '2015-11-03 13:05:43', '2015-02-26 16:56:54', null, null);
 INSERT INTO `configuration` VALUES ('234', 'Installed Modules', 'MODULE_BOXES_INSTALLED', '', 'List of box module filenames separated by a semi-colon. This is automatically updated. No need to edit.', '6', '0', '2016-05-18 15:00:56', '2015-02-26 16:56:55', null, null);
 INSERT INTO `configuration` VALUES ('254', 'Installed Template Block Groups', 'TEMPLATE_BLOCK_GROUPS', 'boxes;header_tags', 'This is automatically updated. No need to edit.', '6', '0', null, '2015-02-26 16:56:56', null, null);
 INSERT INTO `configuration` VALUES ('255', 'Installed Modules', 'MODULE_CONTENT_INSTALLED', 'account/cm_account_stripe_cards;account/cm_account_set_password;checkout_success/cm_cs_redirect_old_order;checkout_success/cm_cs_thank_you;checkout_success/cm_cs_product_notifications;checkout_success/cm_cs_downloads;footer/cm_footer_account;footer/cm_footer_contact_us;footer/cm_footer_information_links;footer/cm_footer_text;footer_suffix/cm_footer_extra_copyright;footer_suffix/cm_footer_extra_icons;header/cm_header_logo;header/cm_header_search;header/cm_header_breadcrumb;login/cm_paypal_login;login/cm_login_form;login/cm_create_account_link;navigation/cm_navbar', 'This is automatically updated. No need to edit.', '6', '0', null, '2015-02-26 16:56:57', null, null);
@@ -627,12 +645,6 @@ INSERT INTO `configuration` VALUES ('1514', 'Number of months to display on the 
 INSERT INTO `configuration` VALUES ('1515', 'Number of characters to display in each subtitle.', 'NEWS_CHARACTERS', '100', 'This is the sub-title that is displayed below the title on the front news page. The default is 100.', '367', '5', null, '2015-11-03 11:27:50', null, null);
 INSERT INTO `configuration` VALUES ('1516', 'Number of articles to display in your RSS Feed.', 'NEWS_RSS_ARTICLE', '10', 'If you want all of your articles to display in the RSS type in something like 2000.  The default is 10', '367', '6', null, '2015-11-03 11:27:50', null, null);
 INSERT INTO `configuration` VALUES ('1517', 'Number of characters to display in each RSS article.', 'NEWS_RSS_CHARACTERS', '250', 'If you keep this at 250 it will hide a little bit of each of article from your viewers. They will have to come to your store to finish.  The default is 250', '367', '7', null, '2015-11-03 11:27:51', null, null);
-INSERT INTO `configuration` VALUES ('1518', 'Enable Total Customers Module', 'MODULE_ADMIN_DASHBOARD_TOTAL_CUSTOMERS_STATUS', 'True', 'Do you want to show the total customers chart on the dashboard?', '6', '1', null, '2015-11-03 13:05:32', null, 'tep_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO `configuration` VALUES ('1519', 'Sort Order', 'MODULE_ADMIN_DASHBOARD_TOTAL_CUSTOMERS_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '0', null, '2015-11-03 13:05:32', null, null);
-INSERT INTO `configuration` VALUES ('1520', 'Enable Total Revenue Module', 'MODULE_ADMIN_DASHBOARD_TOTAL_REVENUE_STATUS', 'True', 'Do you want to show the total revenue chart on the dashboard?', '6', '1', null, '2015-11-03 13:05:39', null, 'tep_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO `configuration` VALUES ('1521', 'Sort Order', 'MODULE_ADMIN_DASHBOARD_TOTAL_REVENUE_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '0', null, '2015-11-03 13:05:39', null, null);
-INSERT INTO `configuration` VALUES ('1522', 'Enable Administrator Logins Module', 'MODULE_ADMIN_DASHBOARD_ADMIN_LOGINS_STATUS', 'True', 'Do you want to show the latest administrator logins on the dashboard?', '6', '1', null, '2015-11-03 13:05:42', null, 'tep_cfg_select_option(array(\'True\', \'False\'), ');
-INSERT INTO `configuration` VALUES ('1523', 'Sort Order', 'MODULE_ADMIN_DASHBOARD_ADMIN_LOGINS_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '0', null, '2015-11-03 13:05:42', null, null);
 INSERT INTO `configuration` VALUES ('1533', 'Enable Facebook Like Module', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_STATUS', 'True', 'Do you want to allow products to be shared through Facebook Like?', '6', '1', null, '2016-01-06 11:12:46', null, 'tep_cfg_select_option(array(\'True\', \'False\'), ');
 INSERT INTO `configuration` VALUES ('1534', 'Layout Style', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_STYLE', 'Button Count', 'Determines the size and amount of social context next to the button.', '6', '1', null, '2016-01-06 11:12:46', null, 'tep_cfg_select_option(array(\'Standard\', \'Button Count\'), ');
 INSERT INTO `configuration` VALUES ('1535', 'Show Faces', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_FACES', 'True', 'Show profile pictures below the button?', '6', '1', null, '2016-01-06 11:12:46', null, 'tep_cfg_select_option(array(\'True\', \'False\'), ');
@@ -686,28 +698,31 @@ CREATE TABLE `content` (
   `title` varchar(127) DEFAULT NULL,
   `content` text,
   `status` tinyint(1) DEFAULT NULL,
-  `create_date` datetime DEFAULT NULL,
+  `image` varchar(127) DEFAULT NULL,
   `page_id` int(11) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of content
 -- ----------------------------
-INSERT INTO `content` VALUES ('1', '1', 'Event Promotion', 'A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin', '1', '2016-07-10 14:16:52', '1');
-INSERT INTO `content` VALUES ('2', '1', 'Shopping', 'A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin', '1', '2016-07-10 14:16:57', '1');
-INSERT INTO `content` VALUES ('3', '1', 'Food', 'A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin', '1', '2016-07-10 14:16:54', '1');
-INSERT INTO `content` VALUES ('4', '2', 'ផ្សព្វផ្សាយព្រឹត្តិការណ៍', 'ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin', '1', '2016-07-10 14:16:59', '1');
-INSERT INTO `content` VALUES ('5', '2', 'ការដើរទិញឥវ៉ាន់\r\n', 'ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin', '1', '2016-07-10 14:17:01', '1');
-INSERT INTO `content` VALUES ('6', '2', 'អាហារ', 'ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin', '1', '2016-07-10 14:17:04', '1');
-INSERT INTO `content` VALUES ('7', '1', 'Welcome to Lucky Mall', 'A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin .', '1', '2016-07-10 14:19:19', '1');
-INSERT INTO `content` VALUES ('8', '2', 'សូមស្វាគមន៍មកកាន់ឡាក់គីម៉ល', 'ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មនៅតំបន់អាស៊ីដែលបានរាយ Group បានសំខាន់ក្នុងការវិស្វកម្មនិង constaution និងសេវាកម្ម IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin ជាក្រុមហ៊ុនកាន់ eith មួយ ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់និងវិស្វកម្ម constaution នៅនិងសេវាកម្ម IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin ។', '1', '2016-07-10 14:19:16', '1');
-INSERT INTO `content` VALUES ('9', '1', 'About Lucky Mall', 'Lucky Mall is the leading Market Expansion Services in cambodia. Our Ckients and Customers bdndfit from intergrated and tailor-made services along the entire value chain, offter any combination of sourcing,marketing,seles;distribution and after-sal support services.\r\n\r\nA holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin\r\n\r\nA holding company eith a select Lucky Mall is the leading Market Expansion Services in cambodia. Our Ckients and Customers bdndfit from intergrated and tailor-made services along the entire value chain, offter any combination of sourcing,marketing,seles;distribution and after-sal support services.\r\n\r\nA holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin\r\n\r\nA holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin\r\n\r\n', '1', '2016-07-10 16:51:59', '2');
-INSERT INTO `content` VALUES ('10', '2', 'អំពីឡាក់គីម៉ល', 'ឡាក់គីម៉លគឺការពង្រីកទីផ្សារសេវាកម្មនាំមុខគេនៅក្នុងប្រទេសកម្ពុជា។ Ckients និងអតិថិជនរបស់យើង bdndfit ពីសេវាកម្មរួមបញ្ចូលគ្នានិងការរៀបចំតាមតម្រូវការរបស់នៅតាមបណ្តោយខ្សែសង្វាក់តម្លៃទាំងមូល, ការរួមបញ្ចូលគ្នានៃប្រភព offter, ទីផ្សារ, seles ណាមួយចែកចាយនិងសេវាគាំទ្របន្ទាប់ពី Sal ។ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growinក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny ឡាក់គីម៉លគឺការពង្រីកទីផ្សារសេវាកម្មនាំមុខគេនៅក្នុងប្រទេសកម្ពុជា។ Ckients និងអតិថិជនរបស់យើង bdndfit ពីសេវាកម្មរួមបញ្ចូលគ្នានិងការរៀបចំតាមតម្រូវការរបស់នៅតាមបណ្តោយខ្សែសង្វាក់តម្លៃទាំងមូល, ការរួមបញ្ចូលគ្នានៃប្រភព offter, ទីផ្សារ, seles ណាមួយចែកចាយនិងសេវាគាំទ្របន្ទាប់ពី Sal ។ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growinក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin', '1', '2016-07-10 16:52:05', '2');
-INSERT INTO `content` VALUES ('11', '1', 'Career Opportunities\r\n', 'Here at Lucky Salon we are always looking for talented people to join our team. We encourage you to submit an application any time, even if there are no current openings listed. If we think you\'re right for us, we\'ll find you a place in our organisation.If you\'re interested, submit your CV with covering letter now.', '1', '2016-07-10 23:26:09', '3');
-INSERT INTO `content` VALUES ('12', '2', 'ឱកាសការងារ\r\n', 'នៅទីនេះនៅឡាក់គីសាឡយើងត្រូវបានគេតែងតែសម្លឹងមើលសម្រាប់មនុស្សដែលមានទេពកោសល្យដើម្បីចូលរួមក្រុមរបស់យើង។ យើងលើកទឹកចិត្តអ្នកឱ្យដាក់សំណើមួយពេលណាមួយ, បើទោះបីជាមិនមានការបើកការសម្ពោធនាពេលបច្ចុប្បន្នរាយ។ ប្រសិនបើយើងគិតថាអ្នកមានសិទ្ធិសម្រាប់យើងយើងនឹងរកឃើញអ្នកនៅកន្លែងមួយនៅក្នុងរបស់យើង organisation.If អ្នកចាប់អារម្មណ៍, ផ្ញើប្រវត្តិរូបរបស់អ្នកជាមួយនឹងគ្របដណ្តប់លិខិតឥឡូវនេះ។', '1', '2016-07-10 23:27:00', '3');
-INSERT INTO `content` VALUES ('13', '1', 'Post Job', 'Here at Lucky Salon we are always looking for talented people to join our team. We encourage you to submit an application any time, even if there are no current openings listed. If we think you\'re right for us, we\'ll find you a place in our organisation.If you\'re interested, submit your CV with covering letter now.<br>Posted Date : 12/05/2016\r\n\r\nCloseing Date : 12/06/2016', '1', '2016-07-10 23:27:44', '3');
-INSERT INTO `content` VALUES ('14', '2', 'ប្រកាសការងារ', 'នៅទីនេះនៅឡាក់គីសាឡយើងត្រូវបានគេតែងតែសម្លឹងមើលសម្រាប់មនុស្សដែលមានទេពកោសល្យដើម្បីចូលរួមក្រុមរបស់យើង។ យើងលើកទឹកចិត្តអ្នកឱ្យដាក់សំណើមួយពេលណាមួយ, បើទោះបីជាមិនមានការបើកការសម្ពោធនាពេលបច្ចុប្បន្នរាយ។ ប្រសិនបើយើងគិតថាអ្នកមានសិទ្ធិសម្រាប់យើងយើងនឹងរកឃើញអ្នកនៅកន្លែងមួយនៅក្នុងរបស់យើង organisation.If អ្នកចាប់អារម្មណ៍, ផ្ញើប្រវត្តិរូបរបស់អ្នកជាមួយនឹងគ្របដណ្តប់លិខិតឥឡូវនេះ។<br>Posted Date : 12/05/2016\r\n\r\nCloseing Date : 12/06/2016\r\n', '1', '2016-07-10 23:28:29', '3');
+INSERT INTO `content` VALUES ('1', '1', 'Event Promotion', 'A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin', '1', null, '1', '2016-07-10 14:16:52');
+INSERT INTO `content` VALUES ('2', '1', 'Shopping', 'A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin', '1', null, '1', '2016-07-10 14:16:57');
+INSERT INTO `content` VALUES ('3', '1', 'Food', 'A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin', '1', null, '1', '2016-07-10 14:16:54');
+INSERT INTO `content` VALUES ('4', '2', 'ផ្សព្វផ្សាយព្រឹត្តិការណ៍', 'ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin', '1', null, '1', '2016-07-10 14:16:59');
+INSERT INTO `content` VALUES ('5', '2', 'ការដើរទិញឥវ៉ាន់\r\n', 'ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin', '1', null, '1', '2016-07-10 14:17:01');
+INSERT INTO `content` VALUES ('6', '2', 'អាហារ', 'ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin', '1', null, '1', '2016-07-10 14:17:04');
+INSERT INTO `content` VALUES ('7', '1', 'Welcome to Lucky Mall', 'A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin A holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin .', '1', null, '1', '2016-07-10 14:19:19');
+INSERT INTO `content` VALUES ('8', '2', 'សូមស្វាគមន៍មកកាន់ឡាក់គីម៉ល', 'ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មនៅតំបន់អាស៊ីដែលបានរាយ Group បានសំខាន់ក្នុងការវិស្វកម្មនិង constaution និងសេវាកម្ម IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin ជាក្រុមហ៊ុនកាន់ eith មួយ ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់និងវិស្វកម្ម constaution នៅនិងសេវាកម្ម IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin ។', '1', null, '1', '2016-07-10 14:19:16');
+INSERT INTO `content` VALUES ('9', '1', 'About Lucky Mall', 'Lucky Mall is the leading Market Expansion Services in cambodia. Our Ckients and Customers bdndfit from intergrated and tailor-made services along the entire value chain, offter any combination of sourcing,marketing,seles;distribution and after-sal support services.\r\n\r\nA holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin\r\n\r\nA holding company eith a select Lucky Mall is the leading Market Expansion Services in cambodia. Our Ckients and Customers bdndfit from intergrated and tailor-made services along the entire value chain, offter any combination of sourcing,marketing,seles;distribution and after-sal support services.\r\n\r\nA holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin\r\n\r\nA holding company eith a select portfoli o representing meny of the Group\'s non listed Asian businesses,principally in engineering and constaution and IT services.(100%)Hong Kong,Macauand the united kingdom, and with a large and growin\r\n\r\n', '1', null, '2', '2016-07-10 16:51:59');
+INSERT INTO `content` VALUES ('10', '2', 'អំពីឡាក់គីម៉ល', 'ឡាក់គីម៉លគឺការពង្រីកទីផ្សារសេវាកម្មនាំមុខគេនៅក្នុងប្រទេសកម្ពុជា។ Ckients និងអតិថិជនរបស់យើង bdndfit ពីសេវាកម្មរួមបញ្ចូលគ្នានិងការរៀបចំតាមតម្រូវការរបស់នៅតាមបណ្តោយខ្សែសង្វាក់តម្លៃទាំងមូល, ការរួមបញ្ចូលគ្នានៃប្រភព offter, ទីផ្សារ, seles ណាមួយចែកចាយនិងសេវាគាំទ្របន្ទាប់ពី Sal ។ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growinក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny ឡាក់គីម៉លគឺការពង្រីកទីផ្សារសេវាកម្មនាំមុខគេនៅក្នុងប្រទេសកម្ពុជា។ Ckients និងអតិថិជនរបស់យើង bdndfit ពីសេវាកម្មរួមបញ្ចូលគ្នានិងការរៀបចំតាមតម្រូវការរបស់នៅតាមបណ្តោយខ្សែសង្វាក់តម្លៃទាំងមូល, ការរួមបញ្ចូលគ្នានៃប្រភព offter, ទីផ្សារ, seles ណាមួយចែកចាយនិងសេវាគាំទ្របន្ទាប់ពី Sal ។ក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growinក្រុមហ៊ុនកាន់ eith ជ្រើស portfoli o តំណាងឱ្យ meny នៃការមិនអាជីវកម្មអាស៊ីដែលបានរាយ Group បានសំខាន់នៅក្នុងវិស្វកម្មនិងសេវាកម្មនិង constaution IT ។ (100%) ហុងកុង, Macauand នគររួបរួមនេះហើយដោយមានទំហំធំនិង growin', '1', null, '2', '2016-07-10 16:52:05');
+INSERT INTO `content` VALUES ('11', '1', 'Career Opportunities\r\n', 'Here at Lucky Salon we are always looking for talented people to join our team. We encourage you to submit an application any time, even if there are no current openings listed. If we think you\'re right for us, we\'ll find you a place in our organisation.If you\'re interested, submit your CV with covering letter now.', '1', null, '3', '2016-07-10 23:26:09');
+INSERT INTO `content` VALUES ('12', '2', 'ឱកាសការងារ\r\n', 'នៅទីនេះនៅឡាក់គីសាឡយើងត្រូវបានគេតែងតែសម្លឹងមើលសម្រាប់មនុស្សដែលមានទេពកោសល្យដើម្បីចូលរួមក្រុមរបស់យើង។ យើងលើកទឹកចិត្តអ្នកឱ្យដាក់សំណើមួយពេលណាមួយ, បើទោះបីជាមិនមានការបើកការសម្ពោធនាពេលបច្ចុប្បន្នរាយ។ ប្រសិនបើយើងគិតថាអ្នកមានសិទ្ធិសម្រាប់យើងយើងនឹងរកឃើញអ្នកនៅកន្លែងមួយនៅក្នុងរបស់យើង organisation.If អ្នកចាប់អារម្មណ៍, ផ្ញើប្រវត្តិរូបរបស់អ្នកជាមួយនឹងគ្របដណ្តប់លិខិតឥឡូវនេះ។', '1', null, '3', '2016-07-10 23:27:00');
+INSERT INTO `content` VALUES ('13', '1', 'Post Job', 'Here at Lucky Salon we are always looking for talented people to join our team. We encourage you to submit an application any time, even if there are no current openings listed. If we think you\'re right for us, we\'ll find you a place in our organisation.If you\'re interested, submit your CV with covering letter now.<br>Posted Date : 12/05/2016\r\n\r\nCloseing Date : 12/06/2016', '1', null, '3', '2016-07-10 23:27:44');
+INSERT INTO `content` VALUES ('14', '2', 'ប្រកាសការងារ', 'នៅទីនេះនៅឡាក់គីសាឡយើងត្រូវបានគេតែងតែសម្លឹងមើលសម្រាប់មនុស្សដែលមានទេពកោសល្យដើម្បីចូលរួមក្រុមរបស់យើង។ យើងលើកទឹកចិត្តអ្នកឱ្យដាក់សំណើមួយពេលណាមួយ, បើទោះបីជាមិនមានការបើកការសម្ពោធនាពេលបច្ចុប្បន្នរាយ។ ប្រសិនបើយើងគិតថាអ្នកមានសិទ្ធិសម្រាប់យើងយើងនឹងរកឃើញអ្នកនៅកន្លែងមួយនៅក្នុងរបស់យើង organisation.If អ្នកចាប់អារម្មណ៍, ផ្ញើប្រវត្តិរូបរបស់អ្នកជាមួយនឹងគ្របដណ្តប់លិខិតឥឡូវនេះ។<br>Posted Date : 12/05/2016\r\n\r\nCloseing Date : 12/06/2016\r\n', '1', null, '3', '2016-07-10 23:28:29');
+INSERT INTO `content` VALUES ('15', '1', 'Common Area Information\r\n', 'with spacious and good location,(ground Floor), (Ground Floor, First Floor). The space will be ideal for events and promotion activities.Lucky mall would like to inform you information of space for rent.', '1', null, '4', '2016-07-11 11:13:03');
+INSERT INTO `content` VALUES ('16', '2', 'តំបន់ទូទៅ', 'ដែលមានទីតាំងធំទូលាយនិងល្អ (ជាន់ផ្ទាល់ដី), (ដីជាន់, ជាន់ទីលើកទីមួយ) ។ អវកាសនេះនឹងត្រូវបានល្អសម្រាប់ព្រឹត្តិការណ៍និងការផ្សព្វផ្សាយផ្សារ activities.Lucky សូមជម្រាបជូនពនៃទំហំដែលអ្នកបានសម្រាប់ជួល។', '1', null, '4', '2016-07-11 11:13:05');
 
 -- ----------------------------
 -- Table structure for `countries`
@@ -1147,6 +1162,27 @@ CREATE TABLE `customers_stripe_tokens` (
 -- ----------------------------
 -- Records of customers_stripe_tokens
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `event`
+-- ----------------------------
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE `event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(127) DEFAULT NULL,
+  `image` varchar(127) DEFAULT NULL,
+  `type` varchar(127) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of event
+-- ----------------------------
+INSERT INTO `event` VALUES ('1', 'Lucky Supermarket', 'images/buger.jpg', 'all', '2016-07-11 10:48:25');
+INSERT INTO `event` VALUES ('2', 'Lucky Supermarket', 'images/buger.jpg', 'all', '2016-07-11 10:48:28');
+INSERT INTO `event` VALUES ('3', 'Lucky Mall', 'images/dfaae18b-f7ff-452c-b736-2cd13aec979c-large.jpeg', 'all', '2016-07-11 10:48:53');
+INSERT INTO `event` VALUES ('4', 'Lucky Mall', 'images/dfaae18b-f7ff-452c-b736-2cd13aec979c-large.jpeg', 'all', '2016-07-11 10:48:55');
 
 -- ----------------------------
 -- Table structure for `geo_zones`
@@ -2016,6 +2052,7 @@ INSERT INTO `sessions` VALUES ('cef6v2vaba1ip0aei2pu3p2p94', '1464271197', 'sess
 INSERT INTO `sessions` VALUES ('d8odo2rotrujg9hfmnek00nbt6', '1463199988', 'sessiontoken|s:32:\"28f30e81b6bc4d85357517dbca4fa108\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 INSERT INTO `sessions` VALUES ('e365h7370epqisv35addd1b2n6', '1463558898', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('f85ipo0es3e2228p9hqdeupvj1', '1463752153', 'sessiontoken|s:32:\"04f7adcb84129265d14a6487693f7abb\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:5:\"khmer\";languages_id|s:1:\"2\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('fjinc6vfcchcu5t7msuk3c36s5', '1468211103', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('i33d3kpbcl25jfaeft7fpq7fi4', '1468133489', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('j2na13jfbnqcnjrsgpeojea5c6', '1468125889', 'sessiontoken|s:32:\"1d4edfafa79692b1915834713ca8b0dc\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 INSERT INTO `sessions` VALUES ('j6a8js2fup18mdmogddk8cbmh1', '1463306905', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
@@ -2025,6 +2062,7 @@ INSERT INTO `sessions` VALUES ('m212uhjv2pfqi7emolibpl4e61', '1468168700', 'sess
 INSERT INTO `sessions` VALUES ('m49kqau04querlde3bu63n1t77', '1462803559', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('nut4uh8m0m8vf6upmom9e97ic1', '1463460920', 'sessiontoken|s:32:\"4b739668124d051a713ac3df6f53d258\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"en\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 INSERT INTO `sessions` VALUES ('p8tc08anqk8odimjkmifp8pct5', '1468167055', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('pjof7t1me7iu3i317sl20kjrg2', '1468211044', 'sessiontoken|s:32:\"e53403225343e94b260cdcf127fbbe6a\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"en\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:10:\"common.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 INSERT INTO `sessions` VALUES ('ptk9revho41sct7d4lecdsknu2', '1463671292', 'sessiontoken|s:32:\"449fbfb2b92610f008d6f978715c52b0\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:8:\"language\";s:2:\"en\";}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"about.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:9:\"group.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:10:\"career.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 INSERT INTO `sessions` VALUES ('rrrrlks5oblat20s590g8e15d1', '1462786945', 'sessiontoken|s:32:\"04639583d136d1ea2494f6f748ec96b4\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:2:{s:5:\"cPath\";s:2:\"23\";s:6:\"osCsid\";s:26:\"rrrrlks5oblat20s590g8e15d1\";}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 INSERT INTO `sessions` VALUES ('vvor952on7q584i0odca296hk1', '1463199988', 'sessiontoken|s:32:\"494328cc869da314a3ab300f0a206107\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:10:\"/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
@@ -2049,6 +2087,32 @@ CREATE TABLE `specials` (
 -- ----------------------------
 -- Records of specials
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `store_directory`
+-- ----------------------------
+DROP TABLE IF EXISTS `store_directory`;
+CREATE TABLE `store_directory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(127) DEFAULT NULL,
+  `image` varchar(127) DEFAULT NULL,
+  `type` varchar(127) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of store_directory
+-- ----------------------------
+INSERT INTO `store_directory` VALUES ('1', 'IBC Library', 'images/ibc.JPG', 'all', '2016-07-11 09:59:01');
+INSERT INTO `store_directory` VALUES ('2', 'Lucky Supermarket', 'images/supermarket.png', 'all', '2016-07-11 09:59:27');
+INSERT INTO `store_directory` VALUES ('3', 'Care Pharma', 'images/1402919.jpg', 'all', '2016-07-11 10:00:11');
+INSERT INTO `store_directory` VALUES ('4', 'Lucky Sabo How', 'images/lucky_zabohow.png', 'all', '2016-07-11 10:01:50');
+INSERT INTO `store_directory` VALUES ('5', 'Lucky Mall', 'images/miss-it-if-you-do-not.jpg', 'all', '2016-07-11 10:01:53');
+INSERT INTO `store_directory` VALUES ('6', 'Lucky Burger', 'images/logo buger.jpg', 'all', '2016-07-11 10:01:52');
+INSERT INTO `store_directory` VALUES ('7', 'Canadia  Bank', 'images/canadia-bank-a.png', 'all', '2016-07-11 10:01:59');
+INSERT INTO `store_directory` VALUES ('8', 'Acleda Bank', 'images/logo_acleda_large.gif', 'all', '2016-07-11 10:01:57');
+INSERT INTO `store_directory` VALUES ('9', 'ANZ Royal Blue', 'images/ANZ_Royal_H_blue.jpg', 'all', '2016-07-11 10:02:01');
 
 -- ----------------------------
 -- Table structure for `tax_class`
@@ -2107,7 +2171,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('0', 'Guest', 'm212uhjv2pfqi7emolibpl4e61', '', '1468164727', '1468168700', '/Salon/contact_us.php');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 'pjof7t1me7iu3i317sl20kjrg2', '', '1468206290', '1468211044', '/Salon/common.php');
 
 -- ----------------------------
 -- Table structure for `zones`
