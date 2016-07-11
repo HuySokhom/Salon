@@ -579,7 +579,6 @@ function updateNet() {
 <script type="text/javascript"><!--
 updateGross();
 //--></script>
-<script src="js/tinymce/tinymce.min.js"></script>
 <?php
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
