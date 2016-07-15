@@ -1,18 +1,11 @@
 <!-- Footer -->
 <footer>
 
-    <div class="row">
-        <ul class="nav navbar-nav" style="margin-top:-1%;">
-            <li><a href="index.html" style="font-size:15px;">Home</a></li>
-            <li><a href="store.html" style="font-size:15px;">Store Directory</a></li>
-            <li><a href="event.html" style="font-size:15px;">Even & Promotion</a></li>
-            <li><a href="common.html" style="font-size:15px;">Common Area Information</a></li>
-            <li><a href="career.html" style="font-size:15px;">Career</a></li>
-        </ul>
-        <p style=" padding:13px; color:blue; margin-top:-1%;">
-            Copyright &copy; <a href="" style="color:blue;">Lucky Mall</a> 2016.
-        </p>
-    </div><!-- close row-->
+    <div class="col-lg-14">
+        <p style="text-align:center; padding: 18px; color: #000;"> Copyright &copy; <a href="" style="background:none;">
+            LHT Capital Co., Ltd.
+        </a>2016</p>
+    </div>
 </footer>
 <script src="ext/bootstrap/js/bootstrap.min.js"></script>
 <!-- Script to Activate the Carousel -->
