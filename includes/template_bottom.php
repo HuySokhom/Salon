@@ -3,11 +3,11 @@
 
     <div class="row">
         <ul class="nav navbar-nav" style="margin-top:-1%;">
-            <li><a href="index.html" style="font-size:15px;">Home</a></li>
-            <li><a href="store.html" style="font-size:15px;">Store Directory</a></li>
-            <li><a href="event.html" style="font-size:15px;">Even & Promotion</a></li>
-            <li><a href="common.html" style="font-size:15px;">Common Area Information</a></li>
-            <li><a href="career.html" style="font-size:15px;">Career</a></li>
+            <li><a href="index.php" style="font-size:15px;">Home</a></li>
+            <li><a href="store.php" style="font-size:15px;">Store Directory</a></li>
+            <li><a href="event.php" style="font-size:15px;">Even & Promotion</a></li>
+            <li><a href="common.php" style="font-size:15px;">Common Area Information</a></li>
+            <li><a href="career.php" style="font-size:15px;">Career</a></li>
         </ul>
         <p style=" padding:13px; color:blue; margin-top:-1%;">
             Copyright &copy; <a href="" style="color:blue;">Lucky Mall</a> 2016.
