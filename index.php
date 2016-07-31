@@ -48,10 +48,11 @@
     <div class="carousel-inner">
       <?php
         foreach( $image_array as $key => $value){
+          $imageName = str_replace(" ", "%20", $value['image']);
           if($value['sort_order'] == 0){
             echo '
               <div class="item active">
-                <div class="fill" style="background-image:url('.$value['image'].');"> </div>
+                <div class="fill" style="background-image:url('.$imageName.');"> </div>
                 <div class="carousel-caption">
                   <h2>Welcome LHT Capital </h2>
                 </div>
@@ -60,7 +61,7 @@
           }else{
             echo '
               <div class="item">
-                <div class="fill" style="background-image:url('.$value['image'].');"></div>
+                <div class="fill" style="background-image:url('.$imageName.');"></div>
                 <div class="carousel-caption">
                   <h2>Welcome to LHT Capital</h2>
                 </div>
