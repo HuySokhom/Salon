@@ -278,10 +278,11 @@ define('PRODUCT_ADDED', '%s has been added to your Cart');
 define('PRODUCT_REMOVED', '%s has been removed from your Cart');
 
 define('HOME', 'ទំព័រដើម');
-define('CONTACT_US', 'ទាក់ទង​មក​ពួក​យើង');
-define('STORE_DIRECTORY', 'ហាងលក់');
-define('EVENT_AND_PROMOTION', 'ព្រឹត្តិការណ៍និងការ​ផ្ដល់​ជូន​ពិសេស
+define('CONTACT_US', 'ទាក់ទង​​យើង');
+define('TRADING', 'ពាណិជ្ជកម្ម');
+define('EVENT', 'ព្រឹត្តិការណ៍');
+define('OUR_TEAM', 'ក្រុមយើង');
+define('ABOUT_US', 'អំពី​យើង');
+define('GROUP_COMPANY', 'សម្ព័ន្ធក្រុមហ៊ុន
 ');
-define('ABOUT_US', 'អំពី​ពួក​យើង');
-define('COMMON_AREA_INFORMAION', 'តំបន់ទូទៅ');
 define('CARRER', 'អាជីព');

@@ -53,13 +53,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body style="background: rgba(204, 204, 204, 0.51);">
+<body style="background: rgba(204, 204, 204, 0.51); font-family: khmer os;">
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="subheader">
             <div id="email" class="pull-right">
-                <a href="" style="margin-left:51px; font-size:18px;">ភាសាខ្មែរ</a> | <a href="" style="font-size:18px;">English</a><br />
+                <a href="index.php?language=kh" style="margin-left:51px; font-size:18px;">ភាសាខ្មែរ</a> | <a href="index.php?language=en" style="font-size:18px;">English</a><br />
             </div>
         </div>
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -79,21 +79,21 @@
             <div id="wrapper">
                 <div id="navmenu">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html"><?php echo HOME;?></a></li>
 
-                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html"><?php echo ABOUT_US;?></a></li>
 
-                        <li style="width:155px;"><a href="companies.html">Group Companies</a></li>
+                        <li style="width:140px;"><a href="companies.html"><?php echo GROUP_COMPANY;?></a></li>
 
-                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="team.html"><?php echo OUR_TEAM;?></a></li>
 
-                        <li><a href="event.html">Event</a></li>
+                        <li><a href="event.html"><?php echo EVENT;?></a></li>
 
-                        <li><a href="training.html">Trading</a></li>
+                        <li><a href="training.html"><?php echo TRADING;?></a></li>
 
-                        <li><a href="career.html">Career</a></li>
+                        <li><a href="career.html"><?php echo CARRER;?></a></li>
 
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="contact.html"><?php echo CONTACT_US;?></a></li>
 
                     </ul>
 

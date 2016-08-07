@@ -22,10 +22,10 @@
 
   $content_query = tep_db_query("
     select * from content
-    where status = 1 and language_id = '" . $_SESSION['languages_id'] . "' and page_id = 1
+    where status = 1 and language_id = '" . $_SESSION['languages_id'] . "' and page_id = 'Home'
     order by id desc
   ");
-  $content_array = array();
+  $content_array = "";
   while($content = tep_db_fetch_array($content_query)){
     $content_array[] = $content;
   }
@@ -54,7 +54,7 @@
               <div class="item active">
                 <div class="fill" style="background-image:url('.$imageName.');"> </div>
                 <div class="carousel-caption">
-                  <h2>Welcome LHT Capital </h2>
+                  <h2>' . $value['text'] . '</h2>
                 </div>
               </div>
             ';
@@ -63,7 +63,7 @@
               <div class="item">
                 <div class="fill" style="background-image:url('.$imageName.');"></div>
                 <div class="carousel-caption">
-                  <h2>Welcome to LHT Capital</h2>
+                  <h2>' . $value['text'] . '</h2>
                 </div>
               </div>
             ';
@@ -90,20 +90,19 @@
         <h3 class="page-header">
           Welcome to LHT Capital
         </h3>
-
       </div>
       <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">
-
-            <h4> LHT Capital</h4>
-
+            <h4>
+              <?php echo $content_array[0]['title'];?>
+            </h4>
           </div>
           <div class="panel-body">
             <div class="animated bounceInDown">
-              <p>LHT is the leading Market Expansion Services in cambodia. Our Ckients and Customers bdndfit from intergrated and tailor-made services along the entire value chain, offter any combination of sourcing,marketing,seles;distribution and after-sal support services. </p>
-              <p>LHT is the leading Market Expansion Services in cambodia. Our Ckients and Customers bdndfit from intergrated and tailor-made services along the entire value chain, offter any combination of sourcing,marketing,seles;distribution and after-sal support services. </p>
-              <p>LHT is the leading Market Expansion Services in cambodia. Our Ckients and Customers bdndfit from intergrated</p>
+              <p>
+              <?php echo $content_array[0]['content'];?>
+              </p>
             </div>
           </div>
         </div>
